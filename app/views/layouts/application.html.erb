@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hotelapp</title>
+    <title>Hidden jewel</title>
     <%= csrf_meta_tags %>
+
+
     <%= csp_meta_tag %>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 360px)" href="portrait.css">
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 361px) and (max-width: 480px)" href="landscape.css">
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="desktop.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
@@ -30,19 +38,35 @@
         <a class="nav-link" href="#">
           <i class="fab fa-instagram"></i> Instagram</a>
       </li>
+
+      <% if current_user.nil? %>
+  <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+<% else %>
+  <%= link_to app_dashboard_index_path, class: 'login-button' do %>Go to App<% end %>
+ 
+<% end %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user"></i> Profile </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="#">My account</a>
-          <a class="dropdown-item" href="#">Log out</a>
+             <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
         </div>
       </li>
     </ul>
   </div>
 </nav>
 <!--/.Navbar -->
+
+  <% unless flash.empty? %>
+   <script type="text/javascript">
+      <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+     toastr['<%= type %>']('<%= f[1] %>');
+   <% end %>
+   </script>
+<% end %>
 <main>
     <%= yield %>
 

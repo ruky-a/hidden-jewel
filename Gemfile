@@ -30,6 +30,10 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'font_awesome5_rails'
+gem 'devise'
+gem 'rails_admin', '~> 2.0'
+gem 'cancancan'
+
 
 
  gem 'jquery-rails'
