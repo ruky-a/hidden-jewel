@@ -19,7 +19,10 @@ h1, h2, h3, h4, h5, h6 {
   padding:0;
 }
 
-      .jarallax {
+    html,
+        body,
+        header,
+        .jarallax {
           height: 700px;
         }
 
@@ -32,13 +35,12 @@ h1, h2, h3, h4, h5, h6 {
           }
         }
 
-        @media (min-width: 1200px) and (max-width: 1200px) {
+        @media (min-width: 800px) and (max-width: 850px) {
           html,
           body,
           header,
           .jarallax {
             height: 100vh;
-            
           }
         }
 
@@ -62,9 +64,12 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .top-nav-collapse {
-            background-color:  !important;
+            background-color: #9da4b1 !important;
         }
-             @media (max-width: 768px) {
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+        @media (max-width: 768px) {
             .navbar:not(.top-nav-collapse) {
                 background: #9da4b1 !important;
             }
@@ -76,14 +81,13 @@ h1, h2, h3, h4, h5, h6 {
             }
         }
 
-        .footer {
+        footer.page-footer {
             background-color: #9da4b1;
         }
 
 
-
 body {
-  background: image_url('logo.png');
+
   font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
  
 
