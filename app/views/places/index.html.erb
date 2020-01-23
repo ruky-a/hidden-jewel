@@ -1,1 +1,74 @@
-<h1> Places List</h1>
+
+
+  
+ <div class="container">
+  <div class="row">
+
+        <% @places.each do |place| %>
+            <div class="col-md-4">
+
+<div class="card promoting-card">
+
+  <!-- Card content -->
+  <div class="card-body d-flex flex-row">
+
+    <!-- Avatar -->
+    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+
+    <!-- Content -->
+    <div>
+
+      <!-- Title -->
+      <h4 class="card-title font-weight-bold mb-2"><%= place.name %></h4>
+
+      <!-- Subtitle -->
+      <p class="card-text"><i class="far fa-address pr-2"></i><%= place.address %></p>
+
+    </div>
+
+  </div>
+
+  <!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+
+  <!-- Card content -->
+  <div class="card-body">
+        <p class="card-text collapse" id="collapseContent"><%= place.description %></p>
+  <p class="card-text collapse" id="collapseContent"><%= place.phone %></p>
+   <p class="card-text collapse" id="collapseContent"><%= place.email %></p>
+    <p class="card-text collapse" id="collapseContent"><%= place.url %></p>
+    <div class="collapse-content">
+
+      <!-- Text -->
+      <p class="card-text collapse" id="collapseContent"></p>
+      <!-- Button -->
+      <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseContent" aria-expanded="false" aria-controls="collapseContent"></a>
+      <i class="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>
+      <i class="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></i>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
+
+<% @places.each do |place| %>
+ <div class="box col-10 offset-1">
+    <h1><%= place.name %></h1>
+    <i><%= place.address %></i><br /><br />
+    <p><%= place.description %></p><br />
+  </div>
+
+<% end %>
+<!-- Card -->

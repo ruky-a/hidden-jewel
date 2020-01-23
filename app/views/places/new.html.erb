@@ -1,0 +1,32 @@
+<br />
+
+<div class="col-md-6 offset-md-3">
+    <div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+       <strong>Enter Your Place Details</strong>
+        </h5>
+
+              <!--Card content-->
+            <div class="card-body px-lg-5 pt-0"><br />
+<%= bootstrap_form_with model: @place do |f| %>
+<%= f.text_field :name %>
+
+    <%= f.text_field :address %>
+      <%= f.email_field :email %>
+        <%= f.url_field :url %>
+        <%= f.phone_field :phone %>
+      
+
+    <%= f.rich_text_area :description %>
+
+
+    <div class="text-center">
+  <%= f.submit "Submit", class: 'btn btn-danger' %>
+</div>
+<% end %>
+
+</div>
+</div>
+</div>
+
+
