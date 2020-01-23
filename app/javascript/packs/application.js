@@ -15,7 +15,7 @@ import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
 
 global.toastr = require("toastr")
-import "../stylesheets/application"
+import "../stylesheets/application.scss"
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
