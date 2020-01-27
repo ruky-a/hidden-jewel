@@ -20,9 +20,11 @@
 
     <!--Navbar -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar">
       <div class="container">
-        <a class="navbar-brand" href="#"><strong>Hidden Jewels</strong></a>
+              <%= link_to 'Hidden Jewels', root_path, class: 'navbar-brand' %>
+       
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
           aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,21 +34,34 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
+
+             <% if (!user_signed_in?) %>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+             <%= link_to  "Sign Up", new_user_registration_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item">
+                <%= link_to  "Login", new_user_session_path, class: "nav-link" %>
             </li>
+              <% else %>
+               <li class="nav-item">
+            <%= link_to 'My profile', edit_user_registration_path, class: 'nav-link' %>
+          </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></a>
             </li>
+            <% end %>
           </ul>
-          <form class="form-inline">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            </div>
-          </form>
+      <form class="form-inline my-1">
+    <div class="md-form form-sm my-0">
+      <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search"
+        aria-label="Search">
+    </div>
+    <button class="btn btn-outline-white btn-sm " type="submit">Search</button>
+  </form>
         </div>
       </div>
     </nav>
+
 
 
 
@@ -63,22 +78,12 @@
 <% end %>
 
 
-    <main>
+ <div id="flex-content-container">
+  <main>
     <%= yield %>
   </main>
+</div>
 
-
-    <div class="footer-copyright py-3 text-center">
-      <div class="container-fluid">
-        © 2019 Copyright: <a href="https://mdbootstrap.com/docs/jquery/"> Hiddenjewels.com </a>
-
-      </div>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
-
-
-  </footer>
   </body>
+</div>
 </html>
