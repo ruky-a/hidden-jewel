@@ -14,14 +14,13 @@ padding: 20px;
 
 }
 
+
+
 h1, h2, h3, h4, h5, h6 {
 margin:0;
 padding:0;
 }
 
-h5 {
-color: white;
-}
 
 html,
 body,
@@ -118,34 +117,25 @@ text-align:center
 
 .view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
 
-      .card {
-            background-color: rgba(229, 228, 255, 0.2);
-        }
-        .md-form label {
-            color: #ffffff;
-        }
-        h6 {
-            line-height: 1.7;
-        }
+.card {
+background-color: rgba(229, 228, 255, 0.2);
+}
+
+h6 {
+line-height: 1.7;
+}
 
 
-        .card {
-            margin-top: 30px;
-            /*margin-bottom: -45px;*/
+.card {
+margin-top: 30px;
+/*margin-bottom: -45px;*/
 
-        }
+}
 
-        .md-form input[type=text]:focus:not([readonly]),
-        .md-form input[type=password]:focus:not([readonly]) {
-            border-bottom: 1px solid #8EDEF8;
-            box-shadow: 0 1px 0 0 #8EDEF8;
-        }
-        .md-form input[type=text]:focus:not([readonly])+label,
-        .md-form input[type=password]:focus:not([readonly])+label {
-            color: #8EDEF8;
-        }
 
-        .md-form .form-control {
-            color: #fff;
-        }
 
+
+
+.md-form .form-control {
+color: #100f0f;
+}
