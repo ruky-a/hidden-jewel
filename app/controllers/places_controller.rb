@@ -53,10 +53,6 @@ class PlacesController < ApplicationController
 
   end
 
-
-
-
-
   private
 
   def place_params

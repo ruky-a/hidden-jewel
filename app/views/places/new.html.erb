@@ -8,7 +8,7 @@
 
     <!--Card content-->
     <div class="card-body px-lg-5 pt-0"><br />
-      <%= bootstrap_form_with model: @place do |f| %>
+      <%= bootstrap_form_for @place do |f| %>
       <%= f.text_field :name %>
 
       <%= f.text_field :address %>
@@ -21,7 +21,7 @@
 
 
       <div class="text-center">
-        <%= f.submit "Submit", class: 'btn btn-danger' %>
+        <%= f.submit "Submit", data: { disable_with: false, confirm: "Are you sure?" },class: 'btn purple-gradient btn-lg' %>
       </div>
       <% end %>
 
