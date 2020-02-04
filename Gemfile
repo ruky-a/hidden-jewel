@@ -35,6 +35,8 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem "geocoder"
 gem "figaro"
+gem 'load_and_authorize_resource'
+gem 'mini_magick'
 
 
 

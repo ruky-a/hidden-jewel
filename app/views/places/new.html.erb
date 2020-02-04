@@ -1,4 +1,3 @@
-<br />
 
 <div class="col-md-6 offset-md-3">
   <div class="card">
@@ -18,15 +17,19 @@
 
 
       <%= f.rich_text_area :description %>
+     <%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
+                                         
+                                    
 
 
       <div class="text-center">
-        <%= f.submit "Submit", data: { disable_with: false, confirm: "Are you sure?" },class: 'btn btn-danger' %>
+        <%= f.submit "Submit", data: { disable_with: false, confirm: "Are you sure?" },class: 'btn blue-gradient' %>
       </div>
       <% end %>
 
     </div>
   </div>
 </div>
+<br>
 
 

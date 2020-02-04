@@ -1,49 +1,209 @@
-<div class="box col-10 offset-1">
-  <h1><%= @place.name %></h1>
-  <i><%= @place.address %></i>
-  <br/><br/>
-  <p><%= @place.description %></p>
 
 
 
 
+<!--/.Carousel Wrapper-->
 
 
-  <% if @place.latitude.present? && @place.longitude.present? %>
-  <script>
 
-    function initMap() {
-      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+<section class="section bg-gray">
+<!-- Container Start -->
+<div class="container">
+<div class="row">
+<!-- Left sidebar -->
+<div class="col-md-8">
+<div class="product-details">
+<h1 class="product-title"><%= @place.name %></h1>
+<div class="product-meta">
+<ul class="list-inline">
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: myLatLng
-      });
+<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href=""><%= @place.address %></a></li>
+</ul>
+</div>
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    }
-  </script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&callback=initMap">
+<div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+<!--Slides-->
+<div class="carousel-inner" role="listbox">
+<div class="carousel-item active">
+<%= image_tag 'box.jpg', class: 'd-block w-100' %>
+</div>
+<div class="carousel-item">
+<%= image_tag 'box.jpg', class: 'd-block w-100' %>
+
+</div>
+<div class="carousel-item">
+<%= image_tag 'box.jpg', class: 'd-block w-100' %>
+</div>
+</div>
+<!--/.Slides-->
+<!--Controls-->
+<a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+<!--/.Controls-->
+<ol class="carousel-indicators">
+<li data-target="#carousel-thumb" data-slide-to="0" class="active">
+<img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(88).jpg" width="100">
+</li>
+<li data-target="#carousel-thumb" data-slide-to="1">
+<img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(121).jpg" width="100">
+</li>
+<li data-target="#carousel-thumb" data-slide-to="2">
+<img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(31).jpg" width="100">
+</li>
+</ol>
+</div>
+
+<div class="content mt-5 pt-5">
+
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+<h3 class="tab-title">Gem Description</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque
+dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas
+voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi
+maxime qui numquam ex voluptatem voluptate, fuga sequi, quasi! Accusantium eligendi vitae unde iure officia
+amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas
+enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab
+excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/LUH7njvhydE?rel=0&amp;controls=0&amp;showinfo=0"
+frameborder="0" allowfullscreen></iframe>
+<p></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam sed, officia reiciendis necessitatibus
+obcaecati eum, quaerat unde illo suscipit placeat nihil voluptatibus ipsa omnis repudiandae, excepturi! Id
+aperiam eius perferendis cupiditate exercitationem, mollitia numquam fuga, inventore quam eaque cumque fugiat,
+neque repudiandae dolore qui itaque iste asperiores ullam ut eum illum aliquam dignissimos similique! Aperiam
+aut temporibus optio nulla numquam molestias eum officia maiores aliquid laborum et officiis pariatur,
+delectus sapiente molestiae sit accusantium a libero, eligendi vero eius laboriosam minus. Nemo quibusdam
+nesciunt doloribus repellendus expedita necessitatibus velit vero?</p>
+
+</div>
+
+<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+<div class="media">
+<!-- Avater -->
+
+<div class="media-body">
+
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="sidebar">
+
+<!-- User Profile widget -->
+<div class="widget user text-center">
+
+<% if @place.avatar.attached? %>
+
+<%= image_tag @place.avatar, class: "rounded-circle img-fluid mb-5 px-5" %>
+<% end %>
+<h4><%= @place.name %></h4>
+<p class="member-time">Member Since Jun 27, 2017</p>
+Website: <%= link_to(h(@place.url), @place.url) %><br />
+Email: <%= @place.email %><br />
+Phone: <%= @place.phone %>
+<ul class="list-inline mt-20">
+<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
+offer</a></li>
+</ul>
+</div>
+<!-- Map Widget -->
+<div class="widget map">
+<div class="map">
+
+<% if @place.latitude.present? && @place.longitude.present? %>
+<script>
+
+function initMap() {
+var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 12,
+center: myLatLng
+});
+
+var marker = new google.maps.Marker({
+position: myLatLng,
+map: map,
+title: 'Hello World!'
+});
+}
 </script>
 
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&callback=initMap">
+</script>
 <div id="map"></div>
 
 <% end %>
-<br />
-
-
-<div class="float-right">
-  <% if current_user && current_user == @place.user %>
-  <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
-  <% end %>
 </div>
 </div>
+<!-- Rate Widget -->
+<div class="widget rate">
+<!-- Heading -->
+<h5 class="widget-header text-center">What would you rate
+<br>
+this product</h5>
+<!-- Rate -->
+<div class="starrr"></div>
+</div>
+<!-- Safety tips widget -->
+<div class="widget disclaimer">
+<h5 class="widget-header">Safety Tips</h5>
+<ul>
+<li>Meet seller at a public place</li>
+<li>Check the item before you buy</li>
+<li>Pay only after collecting the item</li>
+<li>Pay only after collecting the item</li>
+</ul>
+</div>
+<!-- Coupon Widget -->
+<div class="widget coupon text-center">
+<!-- Coupon description -->
+<p>Have a great product to post ? Share it with
+your fellow users.
+</p>
+
+<!-- Submii button -->
+<a href
+
+="" class="btn btn-transparent-white">Submit Listing</a>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="container float-right">
+<% if current_user && current_user == @place.user %>
+<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
+<%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+<% end %>
+</div>
+</div>
+<!-- Container End -->
+</section>
+
+
+
 
 
