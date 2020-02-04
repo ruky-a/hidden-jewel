@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
 
   def show
    @place = Place.find(params[:id])
+
   end
 
 
@@ -57,6 +58,6 @@ class PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :avatar)
+    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :zipcode, :state, :city, :category_id, :avatar)
   end
 end

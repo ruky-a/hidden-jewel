@@ -36,11 +36,14 @@
 
 <!-- Card image -->
 <div class="view overlay">
+  <% if place.avatar.attached? %>
 <%= image_tag place.avatar, class: "card-img-top rounded-0" %>
 <%= link_to place_path(place) do %>
 <div class="mask rgba-white-slight"></div>
 <% end %>
 </div>
+
+<% end %>
 
 
 

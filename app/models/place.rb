@@ -3,6 +3,8 @@ class Place < ApplicationRecord
    after_validation :geocode
 
 
+
+
     has_rich_text :description
     belongs_to :user
     has_one_attached :avatar

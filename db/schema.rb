@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_233311) do
+ActiveRecord::Schema.define(version: 2020_02_04_193932) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2020_02_03_233311) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -58,6 +64,8 @@ ActiveRecord::Schema.define(version: 2020_02_03_233311) do
     t.integer "user_id"
     t.float "latitude"
     t.float "longitude"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
