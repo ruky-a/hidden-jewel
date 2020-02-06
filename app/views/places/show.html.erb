@@ -14,6 +14,29 @@
       <div class="col-md-8">
         <div class="product-details">
           <h1 class="product-title"><%= @place.name %></h1>
+
+             <div class="ratings">
+              <span class="pull-right" data-score=<%= @avg_rating %>>
+                <div class="star-rating" data-score ="<%= @avg_rating %>"></div>
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+                      </span>
+                      </div>
           <div class="product-meta">
             <ul class="list-inline">
 
@@ -61,10 +84,20 @@
           </div>
 
           <div class="content mt-5 pt-5">
+            <ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
+                 aria-selected="true">About this Gem</a>
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
+                 aria-selected="false">Reviews</a>
+              </li>
+            </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <h3 class="tab-title">Gem Description</h3>
+                <h3 class="tab-title"><%= @place.name %></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque
                   dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas
                   voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi
@@ -86,24 +119,95 @@
 
               </div>
 
+
+
+             <!-- Reviews -->
               <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <h3 class="tab-title">Customer Reviews</h3>
+                <div class="product-review">
+               <% @place.reviews.each do |review| %>
+                  <div class="media">
+                    <!-- Avater -->
+                    <img src="images/user/user-thumb.jpg" alt="avater">
+                    <div class="media-body">
+                      <!-- Ratings -->
 
-                <div class="media">
-                  <!-- Avater -->
+                      <div class="ratings">
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+                      </div>
 
-                  <div class="media-body">
+                      <div class="name">
+                    <h5><%= review.user.email %></h5>
+                      </div>
 
+                      <div class="date">
+                       <%= review.created_at.strftime('%b %d %Y') %>   
+                      </div>
 
+                      <div class="review-comment">
+                        <p>
+                        <%= review.comment %>
+                        </p>
+                      </div>
 
-
+                    </div>
                   </div>
+                  <% end %>
 
+
+
+
+
+
+
+
+                  <div class="review-submission">
+                    <h3 class="tab-title">Write your review</h3>
+                    <!-- Rate -->
+                    <div class="rate">
+                      <div class="starrr"></div>
+                    </div>
+                    <div class="review-submit">
+                        <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+          
+                        <div class="col-12">
+                          <%= f.text_area :comment %>
+                          
+                        </div>
+                        <div class="col-12">
+                        <%= f.number_field :rating %>
+                        </div>
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-main">Sumbit</button>
+                        </div>
+                    <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <!-- Right sidebar -->
       <div class="col-md-4">
         <div class="sidebar">
 
@@ -119,13 +223,15 @@
             Website: <%= link_to(h(@place.url), @place.url) %><br />
             Email: <%= @place.email %><br />
             Phone: <%= @place.phone %>
-      
+
             <ul class="list-inline mt-20">
-              <li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
-              <li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
-              offer</a></li>
+              <li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-danger px-lg-5 my-1 px-md-3">Contact us</a></li>
+              <li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Chat with</a></li>
             </ul>
           </div>
+
+
+
           <!-- Map Widget -->
           <div class="widget map">
             <div class="map">
@@ -157,12 +263,16 @@
             <% end %>
           </div>
         </div>
+
+
         <!-- Rate Widget -->
         <div class="widget rate">
           <!-- Heading -->
-          <h5 class="widget-header text-center">What would you rate
-            <br>
-          this product</h5>
+          <div class="widget-header text-center">
+           <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#myModal">
+  Add a review
+ </button>
+</div>
           <!-- Rate -->
           <div class="starrr"></div>
         </div>
@@ -179,15 +289,20 @@
         <!-- Coupon Widget -->
         <div class="widget coupon text-center">
           <!-- Coupon description -->
-          <p>Have a great product to post ? Share it with
-            your fellow users.
+          <p>HOURS OF OPERATION
+              <ul>
+            <li><P> Monday - Friday <br /> 10AM - 8PM</p></li>
+            <li><p><%= @place.phone %></p></li>
+          
+          </ul>
           </p>
 
           <!-- Submii button -->
           <a href
 
-          ="" class="btn btn-transparent-white">Submit Listing</a>
+          ="" class="btn btn-transparent-white">Visit Listing</a>
         </div>
+
 
       </div>
     </div>
@@ -206,5 +321,27 @@
 
 
 
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add a review</h4>
+      </div>
+ <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+        <div class="modal-body">
+          <%= f.text_area :comment %>
+<%= f.number_field :rating, value: 1, min: 1, max: 5 %>
+             
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit Review", class: 'btn btn-primary' %>
+        </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
 

@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
 
   def show
    @place = Place.find(params[:id])
+  @review = Review.new
 
   end
 
@@ -19,7 +20,7 @@ class PlacesController < ApplicationController
   def create
     @place = current_user.places.create(place_params)
     if @place.valid?
-      redirect_to place_path(@place)
+      redirect_to @place
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,6 +54,10 @@ class PlacesController < ApplicationController
   @place.destroy
   redirect_to root_path
 
+  end
+
+  def search
+    @places = Place.search(params)
   end
 
   private

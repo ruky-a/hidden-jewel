@@ -514,6 +514,11 @@ button {
   box-shadow: none;
 }
 
+.btn-primary {
+color: #fff;
+background-color: #682ca9 !important;
+}
+
 /**
  *
  * Card Styles
@@ -593,7 +598,7 @@ ul.pagination .active a {
 }
 
 .page-search {
-  background: #5672f9;
+  background: #682ca9;
   padding: 30px 0;
 }
 
@@ -1820,7 +1825,7 @@ ul.pagination .active a {
 }
 
 .widget.coupon {
-  background: #5672f9;
+  background: #ff3547;
   padding: 35px 30px 40px 30px;
 }
 
@@ -2701,3 +2706,5 @@ form textarea {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+

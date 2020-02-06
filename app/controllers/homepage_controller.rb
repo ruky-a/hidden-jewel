@@ -4,5 +4,11 @@ class HomepageController < ApplicationController
 
   
   def index
+   @categories = Category.all
+   @places = Place.all
+  end
+
+  def search
+    @places = Place.search(params)
   end
 end
