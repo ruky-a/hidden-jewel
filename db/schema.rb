@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_162304) do
+ActiveRecord::Schema.define(version: 2020_02_06_070852) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_162304) do
     t.float "latitude"
     t.float "longitude"
     t.integer "category_id"
+    t.string "video"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end

@@ -3,6 +3,7 @@ class Place < ApplicationRecord
     belongs_to :user
     has_one_attached :avatar
     has_many :reviews
+    has_many_attached :photos
 
     validates :name, :address, :description, :city, :state, :phone, :zipcode, presence: true
 

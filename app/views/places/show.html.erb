@@ -1,6 +1,11 @@
 
 
 
+ <div id="flex-content-container">
+  <main>
+    
+
+
 
 <!--/.Carousel Wrapper-->
 
@@ -16,8 +21,8 @@
           <h1 class="product-title"><%= @place.name %></h1>
 
              <div class="ratings">
-              <span class="pull-right" data-score=<%= @avg_rating %>>
-                <div class="star-rating" data-score ="<%= @avg_rating %>"></div>
+              <span class="pull-right" data-score=>
+                <div class="star-rating" data-score =""></div>
                         <ul class="list-inline">
                           <li class="list-inline-item">
                             <i class="fa fa-star"></i>
@@ -45,20 +50,26 @@
           </div>
 
 
+           
+
+         
           <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item active">
-                <%= image_tag 'box.jpg', class: 'd-block w-100' %>
-              </div>
-              <div class="carousel-item">
-                <%= image_tag 'box.jpg', class: 'd-block w-100' %>
+                <img class="d-block w-100" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43f7309d57d610abcb8e8749b4df5cd1a7080a64/gig_cover_1.jpg" />
 
               </div>
-              <div class="carousel-item">
-                <%= image_tag 'box.jpg', class: 'd-block w-100' %>
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11d26d7148417939b5bbe7cbe60ab6a4f5bf615e/gig_cover_1.jpg" />
+
               </div>
+             
             </div>
+          </div>
+
+               
             <!--/.Slides-->
             <!--Controls-->
             <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
@@ -105,9 +116,10 @@
                   amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas
                   enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab
                 excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
-
-                <iframe width="100%" height="400" src="https://www.youtube.com/embed/LUH7njvhydE?rel=0&amp;controls=0&amp;showinfo=0"
-                frameborder="0" allowfullscreen></iframe>
+            
+                  <iframe src="https://www.youtube.com/embed/<%= @place.video %>" allowfullscreen, width= "100%" height="400" ></iframe>
+               
+            
                 <p></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam sed, officia reiciendis necessitatibus
                   obcaecati eum, quaerat unde illo suscipit placeat nihil voluptatibus ipsa omnis repudiandae, excepturi! Id
@@ -125,50 +137,6 @@
               <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <h3 class="tab-title">Customer Reviews</h3>
                 <div class="product-review">
-               <% @place.reviews.each do |review| %>
-                  <div class="media">
-                    <!-- Avater -->
-                    <img src="images/user/user-thumb.jpg" alt="avater">
-                    <div class="media-body">
-                      <!-- Ratings -->
-
-                      <div class="ratings">
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li class="list-inline-item">
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li class="list-inline-item">
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li class="list-inline-item">
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li class="list-inline-item">
-                            <i class="fa fa-star"></i>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div class="name">
-                    <h5><%= review.user.email %></h5>
-                      </div>
-
-                      <div class="date">
-                       <%= review.created_at.strftime('%b %d %Y') %>   
-                      </div>
-
-                      <div class="review-comment">
-                        <p>
-                        <%= review.comment %>
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
-                  <% end %>
 
 
 
@@ -184,20 +152,20 @@
                       <div class="starrr"></div>
                     </div>
                     <div class="review-submit">
-                        <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+                        <form class="new_review" id="new_review" action="/places/4/reviews" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="1bxNwswJf513ydeu8HO67b2m85Tx4SrF8iBUpQkU9K8ej73yAgpYCUWc63x7m8qAbpl2nTqYFUFnIyDanWHGKw==" />
           
                         <div class="col-12">
-                          <%= f.text_area :comment %>
+                          <div class="form-group"><label for="review_comment">Comment</label><textarea class="form-control" name="review[comment]" id="review_comment">
+</textarea></div>
                           
                         </div>
                         <div class="col-12">
-                        <%= f.number_field :rating %>
+                        <div class="form-group"><label for="review_rating">Rating</label><input step="any" class="form-control" type="number" value="1" name="review[rating]" id="review_rating" /></div>
                         </div>
                         <div class="col-12">
                           <button type="submit" class="btn btn-main">Sumbit</button>
                         </div>
-                    <% end %>
-                    </div>
+</form>                    </div>
                   </div>
                 </div>
               </div>
@@ -214,15 +182,12 @@
           <!-- User Profile widget -->
           <div class="widget user text-center">
 
-            <% if @place.avatar.attached? %>
 
-            <%= image_tag @place.avatar, class: "rounded-circle img-fluid mb-5 px-5" %>
-            <% end %>
+            <img class="rounded-circle img-fluid mb-5 px-5" src="http://127.0.0.1:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ea3ea11d4ef000a1f69cd4d88ce8e722614aa79/gig_cover_1.jpg" />
             <h4><%= @place.name %></h4>
-            <p class="member-time">Member Since Jun 27, 2017</p>
-            Website: <%= link_to(h(@place.url), @place.url) %><br />
-            Email: <%= @place.email %><br />
-            Phone: <%= @place.phone %>
+            Website: <a href=""></a><br />
+            Email: rukevwe009@gmail.com<br />
+            Phone: 8138048895
 
             <ul class="list-inline mt-20">
               <li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-danger px-lg-5 my-1 px-md-3">Contact us</a></li>
@@ -236,11 +201,10 @@
           <div class="widget map">
             <div class="map">
 
-              <% if @place.latitude.present? && @place.longitude.present? %>
               <script>
 
                 function initMap() {
-                  var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+                  var myLatLng = {lat: 28.5374094, lng: -81.1747498};
 
                   var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 12,
@@ -260,7 +224,6 @@
             </script>
             <div id="map"></div>
 
-            <% end %>
           </div>
         </div>
 
@@ -292,7 +255,7 @@
           <p>HOURS OF OPERATION
               <ul>
             <li><P> Monday - Friday <br /> 10AM - 8PM</p></li>
-            <li><p><%= @place.phone %></p></li>
+            <li><p>8138048895</p></li>
           
           </ul>
           </p>
@@ -310,10 +273,8 @@
   </div>
 </div>
 <div class="container float-right">
-  <% if current_user && current_user == @place.user %>
-  <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
-  <% end %>
+  <a class="btn btn-primary" href="/places/4/edit">Edit</a>
+  <a data-confirm="Are you sure you want to delete this?" class="btn btn-danger" rel="nofollow" data-method="delete" href="/places/4">Destroy</a>
 </div>
 </div>
 <!-- Container End -->
@@ -330,18 +291,30 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">Add a review</h4>
       </div>
- <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+ <form class="new_review" id="new_review" action="/places/4/reviews" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="cwXaAzUos7wfsDN5HcNMhmCDKyolggJXCLBvEILBtEy4Nioz+yuUKC3lD6uWKzzrs7yuI+77PdOdsxtvFrSGyA==" />
         <div class="modal-body">
-          <%= f.text_area :comment %>
-<%= f.number_field :rating, value: 1, min: 1, max: 5 %>
+          <div class="form-group"><label for="review_comment">Comment</label><textarea class="form-control" name="review[comment]" id="review_comment">
+</textarea></div>
+<div class="form-group"><label for="review_rating">Rating</label><input step="any" value="1" min="1" max="5" class="form-control" type="number" name="review[rating]" id="review_rating" /></div>
              
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "Submit Review", class: 'btn btn-primary' %>
+          <div class="form-group"><input type="submit" name="commit" value="Submit Review" class="btn btn-primary btn" data-disable-with="Submit Review" /></div>
         </div>
-       <% end %>
-      </div>
+</form>      </div>
     </div>
   </div>
 
+
+
+
+  </main>
+</div>
+ 
+
+
+
+  </body>
+
+</html>

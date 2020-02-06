@@ -34,8 +34,10 @@
     </div>
   </div>
 </section>
+<br /><br />
 
 <div class="container">
+  <h1 class="text-center">Hidden Jewel's of United States</h1>
 <div class="row">
 
 <% @places.each do |place| %>
@@ -54,6 +56,7 @@
 <%= image_tag place.avatar.variant(resize_to_limit: [50, 50]), class: "rounded-circle mr-3" %>
 
  <% end %>
+ 
 
 <!-- Content -->
 <div>
@@ -61,7 +64,7 @@
 <!-- Title -->
 <h4 class="card-title font-weight-bold mb-2"><%= link_to place.name, place_path(place) %></h4>
 <!-- Subtitle -->
-<p class="card-text"><i class="far fa-clock pr-2"></i><%= place.address %></p>
+<p class="card-text"><i class="far fa-clock pr-2"></i><%= place.address %>, <%= place.city %> <%= place.state %>, <%= place.zipcode %></p>
 
 </div>
 
@@ -69,14 +72,16 @@
 
 <!-- Card image -->
 <div class="view overlay">
-  <% if place.avatar.attached? %>
-<%= image_tag place.avatar, class: "card-img-top rounded-0" %>
+  <% if place.photos.attached? %>
+<%= image_tag place.photos.first, class: "card-img-top" %>
+<% end %>
+
 <%= link_to place_path(place) do %>
 <div class="mask rgba-white-slight"></div>
 <% end %>
 </div>
 
-<% end %>
+
 
 
 
@@ -86,9 +91,7 @@
 <div class="collapse-content">
 <%= place.description %>
 <!-- Button -->
-<a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseContent" aria-expanded="false" aria-controls="collapseContent"></a>
-<i class="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>
-<i class="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></i>
+
 
 </div>
 </div>

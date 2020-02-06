@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+   protect_from_forgery except: [:upload_photo]
     before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
 
@@ -60,9 +61,20 @@ class PlacesController < ApplicationController
     @places = Place.search(params)
   end
 
+  def upload_photo
+   @place.photos.attach(params[:file])
+   render json: { success: true}
+  end
+
+  def delete_photo
+    @image = ActiveStorage::Attachment.find(params[:photo_id])
+    @image.purge
+    redirect_to place_path(@place)
+  end
+
   private
 
   def place_params
-    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :zipcode, :state, :city, :category_id, :avatar)
+    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :zipcode, :state, :city, :category_id, :avatar, :video, photos: [])
   end
 end

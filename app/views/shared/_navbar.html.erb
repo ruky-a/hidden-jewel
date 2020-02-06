@@ -1,4 +1,4 @@
-
+<!-- 
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-shrink" id="mainNav">
     <div class="container">
@@ -45,4 +45,70 @@
 
         </div>
     </div>
-    </nav>
+
+
+
+    </nav> -->
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light navigation">
+      <div class="container">
+              <%= link_to 'Hidden Jewels', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto main-nav ">
+              <li class="nav-item">
+            <%= link_to  "Places", places_path, class: "nav-link" %>
+              </li>
+
+              <li class="nav-item ">
+            <%= link_to  "About Us", about_path, class: "nav-link" %>
+              </li>
+              
+            </ul>
+            <ul class="navbar-nav ml-auto mt-10">
+             
+              <% if (!user_signed_in?) %>
+              <li class="nav-item">
+             <%= link_to "Sign Up", new_user_registration_path, class: "nav-link login-button"  %>
+            
+           </li>
+            
+
+               <li class="nav-item">
+                <%= link_to  "Login", new_user_session_path, class: "nav-link login-button" %>
+              </li>
+
+              <% else %>
+
+              
+
+               <li class="nav-item dropdown dropdown-slide">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">My Profile<span><i class=""></i></span>
+                </a>
+              
+
+            
+                <!-- Dropdown list -->
+                <div class="dropdown-menu">
+                  <a class="dropdown-item"> <%= link_to  "Log out", destroy_user_session_path, method: :delete %></a>
+                  
+                  <a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
+                  <a class="dropdown-item" href="dashboard-archived-ads.html">Dashboard Archived Ads</a>
+                  <a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a>
+                </div>
+              </li>
+                <% end %>
+              
+              <li class="nav-item">
+                 <%= link_to new_place_path, class: 'nav-link text-white add-button' do %>
+                  <i class="fa fa-plus-circle"></i> Add Gem
+                       <% end %>
+              </li>
+            </ul>
+          </div>
+        </nav>

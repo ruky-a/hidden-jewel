@@ -13,11 +13,14 @@ require("channels")
 
 
 
+
 import 'bootstrap'
 
 import "@fortawesome/fontawesome-free/js/all";
 
 global.toastr = require("toastr")
+
+window.Dropzone = require("dropzone")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
