@@ -436,12 +436,12 @@ button {
 }
 
 .btn-main, .btn-main-sm {
-  background: #5f4a21;
+  background: #bf8f2d;
   color: #fff;
 }
 
 .btn-main:hover, .btn-main-sm:hover {
-  background: #082de1;
+  background: #bf8f2d;
   color: #fff;
 }
 
@@ -2576,7 +2576,7 @@ form textarea {
 }
 
 .footer {
-  background: #232425;
+  background: black;
 }
 
 .footer .block h4 {
@@ -2624,7 +2624,8 @@ form textarea {
 
 .footer .block-2 {
   padding: 18px 30px;
-  background: #46484A;
+  background: black
+  ;
   border-radius: 2px;
 }
 
@@ -2648,7 +2649,7 @@ form textarea {
 
 .footer-bottom {
   position: relative;
-  background: #363839;
+  background: black;
   padding: 25px 0;
 }
 
@@ -2723,3 +2724,9 @@ li.nav-item.active {
     right: 0;
     bottom: 0;
 }
+
+
+.overlay{
+    background: #5f4a21;
+
+    }

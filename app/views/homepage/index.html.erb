@@ -164,59 +164,10 @@
 </section>
 
 
-<section class="popular-deals section bg-gray">
- 
-   
-  <div class="container">
-    <h1 class="text-center">Featured Places Nearby!</h1>
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
 
 
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-
-    <!--First slide-->
-    <div class="carousel-item active">
-      <div class="row">
-
-     <% @places.each do |place| %>
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top">
-            <% if place.photos.attached? %>
-  <%= image_tag place.photos.first, class: "card-img-top" %>
-<% end %>
-          <div class="card-body">
-            <h4 class="card-title"><%= place.name %></h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-           
-          </div>
-        </div>
-       
-      </div>
-       <% end %>
-    </div>
-
-      
-
-    </div>
-    <!--/.Third slide-->
-
-  </div>
-  <!--/.Slides-->
-
-</div>
-</div>
-
-
-</section>
-
-
-
-
-<section class="call-to-action overly bg-3 section-sm">
+<section class="call-to-action overlay bg-3 section-sm">
   <!-- Container Start -->
   <div class="container">
     <div class="row justify-content-md-center text-center">
