@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("bootstrap/dist/js/bootstrap")
-require("mdb/dist/js/mdb")
+
 
 
 window.Geocomplete = require("geocomplete")
@@ -17,7 +17,6 @@ window.Geocomplete = require("geocomplete")
   $("#autolocation").geocomplete();
 
 import 'bootstrap'
-import 'mdb'
 
 import "@fortawesome/fontawesome-free/js/all";
 
