@@ -8,7 +8,6 @@
       <div class="col-md-12">
         <div class="search-result bg-gray">
           <h1>Gems</h1>
-          <% if @category %> > <%= @category.name %> <% end %>
         </div>
       </div>
     </div>
@@ -21,28 +20,16 @@
             <ul class="category-list">
 
               <li><%= link_to "#{item.name}", search_path(category: item.id) %></li><hr />
-
-
-
-            </ul>
+           </ul>
             <% end %>
           </div>
-
-
-
-
-
-        </div>
+ </div>
       </div>
 
 
       <div class="col-md-9">
 
         <div class="product-grid-list">
-
-
-
-
 
           <!-- product card -->
           <div class="product-item">
@@ -89,7 +76,7 @@
                     <% end %>
                   </div>
 
-                  <div class="card-body"><li class="list-inline-item"><%= place.description.truncate(20) %></a></li>
+                  <div class="card-body"><li class="list-inline-item"><%= place.description %></a></li>
                   </div>
                   <div class="card-footer">
                     <span class="float-left">Category: <%= place.category.name %></span>
