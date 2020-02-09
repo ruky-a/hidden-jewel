@@ -15,5 +15,9 @@ module ApplicationHelper
    ActionController::Base.helpers.asset_path('icon_default_image.png')
 end
   end
+
+  def self.active
+    where(status: 1)
+  end
   
 end

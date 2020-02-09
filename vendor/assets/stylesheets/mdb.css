@@ -2070,15 +2070,6 @@ button.bg-light:focus {
    }
 
 
-   @font-face {
-     font-family: Roboto;
-     src: url(/assets/Roboto-Regular.eot);
-     src: url(/assets/Roboto-Regular.eot?#iefix) format("embedded-opentype"), 
-       url(/assets/Roboto-Regular.woff2) format("woff2"), 
-       url(/assets/Roboto-Regular.woff) format("woff"), 
-       url(/assets/Roboto-Regular.ttf) format("truetype");
-       font-weight: 400
-   }
 
 
    @font-face {

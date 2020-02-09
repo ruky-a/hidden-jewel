@@ -2,7 +2,6 @@
 @import "~bootstrap/scss/bootstrap"; // never forget the semicolon at the end
 @import "./_custom";
 
-
 # app/javascript/packs/stylesheets/_custom.scss
 h1 { 
   color: red;
@@ -13,5 +12,4 @@ h1 {
 
 @import 'toastr'
 
-@import 'dropzone/dist/basic.css';
-@import 'dropzone/dist/dropzone.css';
+@import 'geoautocomplete/dist/geoautocomplete';

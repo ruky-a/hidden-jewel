@@ -7,20 +7,23 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
+require("bootstrap/dist/js/bootstrap")
 
 
+window.Geocomplete = require("geocomplete")
 
-
-
-
+  $("#autolocation").geocomplete();
 
 import 'bootstrap'
+import 'mdb'
 
 import "@fortawesome/fontawesome-free/js/all";
 
+import "stylesheets/application.scss"
+
 global.toastr = require("toastr")
 
-window.Dropzone = require("dropzone")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

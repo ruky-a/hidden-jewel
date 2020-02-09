@@ -5,94 +5,85 @@
       <div class="col-md-12">
         <!-- Header Contetnt -->
         <div class="content-block">
+          <%= link_to places_path do %>
           <%= image_tag 'box6.jpg' %>
-         
-             <div class="advance-search">
+          <% end %>
+          <div class="advance-search">
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 align-content-center">
-              
-                  <%= form_tag search_places_path, method: :get do |f| %>
-                      <div class="form-row">
-                        <!-- <div class="form-group col-md-4">
-                          <%= text_field_tag :search, nil, placeholder: "Restaurants, Fitness, etc.", class: "form-control my-2 my-lg-1" %>
-                         
-                        </div> -->
-                        <div class="form-group col-md-5">
-                          <%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}), class: "w-100 form-control mt-lg-1 mt-md-2" %>
-                      
-                        </div>
-                        <div class="form-group col-md-5">
-                          <%= text_field_tag :location, nil, placeholder: "tampa, newyork, etc.", class: "form-control my-2 my-lg-1" %>
-                         
-                        </div>
-                        <div class="form-group col-md-2 align-self-center">
-                          <%= submit_tag 'Search', class: 'btn btn-primary' %>
-                       
-                        </div>
-                      </div>
-               <% end %>
+
+                  <%= form_tag search_path, method: :get do |f| %>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <%= text_field_tag :search, params[:search], placeholder: "Burgers, Gym, etc.", class: "form-control my-2 my-lg-1" %>
+
+                    </div>
+                
+
+                    <div class="form-group col-md-3">
+                      <%= text_field_tag :location, nil, placeholder: "Location e.g Chicago", class: "form-control my-2 my-lg-1" %>
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+                      <%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}), prompt: "Select category", class: "form-control mt-lg-1 mt-md-2" %>
+
+                    </div>
+
+                    <div class="form-group col-md-2 my-btn">
+                      <%= submit_tag "Search", class: " btn btn-block btn-primary" %>
+
+                    </div>
                   </div>
+                  <% end %>
                 </div>
+                 <div class="short-popular-category-list text-center">
+<h2>Popular Category</h2>
+<ul class="list-inline">
+<li class="list-inline-item">
+ <%= link_to search_path(category: 1) do %><i class="fa fa-bed"></i> Hotel</a></li>
+ <% end %>
+<li class="list-inline-item">
+<%= link_to search_path(category: 2) do %><i class="fa fa-grav"></i> Fitness</a>
+</li>
+ <% end %>
+
+<li class="list-inline-item">
+<%= link_to search_path(category: 2) do %><i class="fa fa-car"></i> Cars</a>
+</li>
+ <% end %>
+<li class="list-inline-item">
+ <%= link_to search_path(category: 1) do %><i class="fas fa-utensils"></i> Restaurants</a>
+</li>
+ <% end %>
+<li class="list-inline-item">
+<%= link_to search_path(category: 1) do %><i class="fa fa-coffee"></i> Cafe</a>
+</li>
+ <% end %>
+</ul>
+</div> 
+              </div>
+            </div>
           </div>
         </div>
-          <div class="short-popular-category-list text-center">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-bed"></i> Hotel</a></li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-grav"></i> Fitness</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-car"></i> Cars</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-cutlery"></i> Restaurants</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-coffee"></i> Cafe</a>
-              </li>
-            </ul>
-          </div>
-       <!--    <div class="short-popular-category-list text-center">
-            <h2>Popular Category</h2>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-bed"></i> Hotel</a></li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-grav"></i> Fitness</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-car"></i> Cars</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-cutlery"></i> Restaurants</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="category.html"><i class="fa fa-coffee"></i> Cafe</a>
-              </li>
-            </ul>
-          </div> -->
-          
-        </div>
-        <!-- Advance Search -->
-        
-        
       </div>
     </div>
 
   </div>
 
-  <!-- Container End -->
 </section>
+</div>
+
+
 <section class=" section">
   <!-- Container Start -->
   <div class="container">
     <div class="row">
       <div class="col-12">
         <!-- Section title -->
-         <h1 class="text-center">Search For Gems Around You!</h1>
-         <br />
+        <h1 class="text-center">Search For Gems Around You!</h1>
+        <br />
         <div class="row">
           <!-- Category list -->
           <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
@@ -101,66 +92,132 @@
                 <i class="fa fa-laptop icon-bg-1"></i> 
                 <h4>Electronics</h4>
               </div>
-              <ul class="category-list" >
-                <li><a href="category.html">Laptops <span>93</span></a></li>
-                <li><a href="category.html">Iphone <span>233</span></a></li>
-                <li><a href="category.html">Microsoft  <span>183</span></a></li>
-                <li><a href="category.html">Monitors <span>343</span></a></li>
-              </ul>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-                <i class="fa fa-apple icon-bg-2"></i> 
-                <h4>Restaurants</h4>
-              </div>
-              <ul class="category-list" >
-                <li><a href="category.html">Cafe <span>393</span></a></li>
-                <li><a href="category.html">Fast food <span>23</span></a></li>
-                <li><a href="category.html">Restaurants  <span>13</span></a></li>
-                <li><a href="category.html">Food Track<span>43</span></a></li>
-              </ul>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-                <i class="fa fa-home icon-bg-3"></i> 
-                <h4>Real Estate</h4>
-              </div>
-              <ul class="category-list" >
-                <li><a href="category.html">Farms <span>93</span></a></li>
-                <li><a href="category.html">Gym <span>23</span></a></li>
-                <li><a href="category.html">Hospitals  <span>83</span></a></li>
-                <li><a href="category.html">Parolurs <span>33</span></a></li>
-              </ul>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-                <i class="fa fa-shopping-basket icon-bg-4"></i> 
-                <h4>Shoppings</h4>
-              </div>
-              <ul class="category-list" >
-                <li><a href="category.html">Mens Wears <span>53</span></a></li>
-                <li><a href="category.html">Accessories <span>212</span></a></li>
-                <li><a href="category.html">Kids Wears <span>133</span></a></li>
-                <li><a href="category.html">It & Software <span>143</span></a></li>
-              </ul>
-            </div>
-          </div> <!-- /Category List -->
+              <% @categories.each do |item| %>
+            <ul class="category-list" >
+
+                <li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
         
-          
-        </div>
+
+</ul>
+            
+              <% end %>
+          </div>
+        </div> <!-- /Category List -->
+        <!-- Category list -->
+        <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+          <div class="category-block">
+            <div class="header">
+              <i class="fas fa-utensils icon-bg-2"></i> 
+              <h4>Restaurants</h4>
+            </div>
+            <ul class="category-list" >
+              <li><a href="category.html">Cafe <span>393</span></a></li>
+              <li><a href="category.html">Fast food <span>23</span></a></li>
+              <li><a href="category.html">Restaurants  <span>13</span></a></li>
+              <li><a href="category.html">Food Track<span>43</span></a></li>
+            </ul>
+          </div>
+        </div> <!-- /Category List -->
+        <!-- Category list -->
+        <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+          <div class="category-block">
+            <div class="header">
+              <i class="fa fa-home icon-bg-3"></i> 
+              <h4>Real Estate</h4>
+            </div>
+            <ul class="category-list" >
+              <li><a href="category.html">Farms <span>93</span></a></li>
+              <li><a href="category.html">Gym <span>23</span></a></li>
+              <li><a href="category.html">Hospitals  <span>83</span></a></li>
+              <li><a href="category.html">Parolurs <span>33</span></a></li>
+            </ul>
+          </div>
+        </div> <!-- /Category List -->
+        <!-- Category list -->
+        <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+          <div class="category-block">
+            <div class="header">
+              <i class="fa fa-shopping-basket icon-bg-4"></i> 
+              <h4>Shoppings</h4>
+            </div>
+            <ul class="category-list" >
+              <li><a href="category.html">Mens Wears <span>53</span></a></li>
+              <li><a href="category.html">Accessories <span>212</span></a></li>
+              <li><a href="category.html">Kids Wears <span>133</span></a></li>
+              <li><a href="category.html">It & Software <span>143</span></a></li>
+            </ul>
+          </div>
+        </div> 
+
+        <!-- /Category List -->
+
+        <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+            <div class="category-block">
+              <div class="header">
+                <i class="fa fa-briefcase icon-bg-5"></i> 
+                <h4>Jobs</h4>
+              </div>
+              <ul class="category-list" >
+                <li><a href="category.html">It Jobs <span>93</span></a></li>
+                <li><a href="category.html">Cleaning & Washing <span>233</span></a></li>
+                <li><a href="category.html">Management  <span>183</span></a></li>
+                <li><a href="category.html">Voluntary Works <span>343</span></a></li>
+              </ul>
+            </div>
+          </div> <!-- /Category List -->
+          <!-- Category list -->
+          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+            <div class="category-block">
+              <div class="header">
+                <i class="fa fa-car icon-bg-6"></i> 
+                <h4>Vehicles</h4>
+              </div>
+              <ul class="category-list" >
+                <li><a href="category.html">Bus <span>193</span></a></li>
+                <li><a href="category.html">Cars <span>23</span></a></li>
+                <li><a href="category.html">Motobike  <span>33</span></a></li>
+                <li><a href="category.html">Rent a car <span>73</span></a></li>
+              </ul>
+            </div>
+          </div> <!-- /Category List -->
+          <!-- Category list -->
+          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+            <div class="category-block">
+              <div class="header">
+                <i class="fa fa-paw icon-bg-7"></i> 
+                <h4>Pets</h4>
+              </div>
+              <ul class="category-list" >
+                <li><a href="category.html">Cats <span>65</span></a></li>
+                <li><a href="category.html">Dogs <span>23</span></a></li>
+                <li><a href="category.html">Birds  <span>113</span></a></li>
+                <li><a href="category.html">Others <span>43</span></a></li>
+              </ul>
+            </div>
+          </div> <!-- /Category List -->
+          <!-- Category list -->
+          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+            <div class="category-block">
+              
+              <div class="header">
+                <i class="fa fa-laptop icon-bg-8"></i> 
+                <h4>Services</h4>
+              </div>
+              <ul class="category-list" >
+                <li><a href="category.html">Cleaning <span>93</span></a></li>
+                <li><a href="category.html">Car Washing <span>233</span></a></li>
+                <li><a href="category.html">Clothing  <span>183</span></a></li>
+                <li><a href="category.html">Business <span>343</span></a></li>
+              </ul>
+            </div>
+          </div> 
+
+
       </div>
     </div>
   </div>
-  <!-- Container End -->
+</div>
+<!-- Container End -->
 </section>
 
 
@@ -175,10 +232,11 @@
         <div class="content-holder">
           <h2>Are you a Hidden Jewel?
           Be A Gem!</h2>
-          <h2>Innovative advertising at affordable prices like never before!</h2>
+          <br />
+          <h1>Innovative advertising at affordable prices like never before!</h1>
           <ul class="list-inline mt-30">
             <li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Add Your Place</a></li>
-            
+
           </ul>
         </div>
       </div>
@@ -187,6 +245,107 @@
   <!-- Container End -->
 </section>
 
-<!--/.Carousel Wrapper-->
 
-<!--/.Carousel Wrapper-->
+ <h1 class="font-weight-bold text-center h1 my-5">Featured Gems</h1>
+<!--Carousel Wrapper-->
+<div class="container">
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+    <!--Controls-->
+    <div class="controls-top">
+      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+        class="fas fa-chevron-right"></i></a>
+      </div>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+
+          <% @places.each do |place| %>
+          <div class="col-md-4">
+            <div class="card mb-2">
+              <%= link_to place_path(place) do %>
+              <div class="card-img-top">
+                   
+              <iframe src="https://www.youtube.com/embed/<%= place.video %>" allowfullscreen, width= "100%" height="100%" ></iframe>
+              <% end %>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
+               <p class="card-text"><%= place.city %>, <%= place.state %></p>
+
+              </div>
+                <div class="card-footer">
+                      <span class="float-left">Category: <%= place.category.name %></span>
+                      <span class="float-right">
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
+                          <%= link_to place_path(place) do %>
+                          <i class="fas fa-eye"></i>
+                          <% end %>
+                        </a>
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                        </a>
+                      </span>
+                    </div>
+
+            </div>
+          </div>
+          <% end %>
+
+
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item">
+
+          <% @places.each do |place| %>
+          <div class="col-md-4">
+            <div class="card mb-2">
+              <%= link_to place_path(place) do %>
+              <% if place.photos.attached? %>
+                 
+              <%= image_tag place.photos.first, class: "card-img-top", height: "180px" %>
+              <% end %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
+                <p class="card-text"><%= place.city %>, <%= place.state %></p>
+
+              </div>
+                <div class="card-footer">
+                      <span class="float-left">Category: <%= place.category.name %></span>
+                      <span class="float-right">
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
+                          <%= link_to place_path(place) do %>
+                          <i class="fas fa-eye"></i>
+                               <% end %>
+                        </a>
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                        </a>
+                      </span>
+                    </div>
+
+            </div>
+          </div>
+          <% end %>
+
+
+
+
+        </div>
+   
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <br />
+<section class="section pb-3 wow fadeIn" data-wow-delay="0.3s">
+
+    

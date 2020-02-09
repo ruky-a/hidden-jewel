@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Category.create(name: "Restaurants")
+Category.create(name: "Restaurants")
 
 
 Category.where(name: "Restaurants").first_or_create(name: "Restaurants")

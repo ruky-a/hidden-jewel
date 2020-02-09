@@ -134,38 +134,75 @@
 
 
              <!-- Reviews -->
-              <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+               <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <h3 class="tab-title">Customer Reviews</h3>
                 <div class="product-review">
+               <% @place.reviews.each do |review| %>
+                  <div class="media">
+                    <!-- Avater -->
+                    <img src="images/user/user-thumb.jpg" alt="avater">
+                    <div class="media-body">
+                      <!-- Ratings -->
 
+                      <div class="ratings">
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+                      </div>
 
+                      <div class="name">
+              <h5><%= review.user.email %></h5>
+                      </div>
 
+                      <div class="date">
+                       <%= review.created_at.strftime('%b %d %Y') %>   
+                      </div>
 
+                      <div class="review-comment">
+                        <p>
+                        <%= review.comment %>
+                        </p>
+                      </div>
 
+                    </div>
+                  </div>
+                  <% end %>
 
-
-
-                  <div class="review-submission">
+              <div class="review-submission">
                     <h3 class="tab-title">Write your review</h3>
                     <!-- Rate -->
                     <div class="rate">
                       <div class="starrr"></div>
                     </div>
                     <div class="review-submit">
-                        <form class="new_review" id="new_review" action="/places/4/reviews" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="1bxNwswJf513ydeu8HO67b2m85Tx4SrF8iBUpQkU9K8ej73yAgpYCUWc63x7m8qAbpl2nTqYFUFnIyDanWHGKw==" />
-          
+                        <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+
                         <div class="col-12">
-                          <div class="form-group"><label for="review_comment">Comment</label><textarea class="form-control" name="review[comment]" id="review_comment">
-</textarea></div>
-                          
+                          <%= f.text_area :comment %>
+
                         </div>
                         <div class="col-12">
-                        <div class="form-group"><label for="review_rating">Rating</label><input step="any" class="form-control" type="number" value="1" name="review[rating]" id="review_rating" /></div>
+                        <%= f.number_field :rating %>
                         </div>
                         <div class="col-12">
                           <button type="submit" class="btn btn-main">Sumbit</button>
                         </div>
-</form>                    </div>
+                    <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -173,7 +210,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Right sidebar -->
       <div class="col-md-4">
@@ -185,9 +221,13 @@
 
             <img class="rounded-circle img-fluid mb-5 px-5" src="http://127.0.0.1:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ea3ea11d4ef000a1f69cd4d88ce8e722614aa79/gig_cover_1.jpg" />
             <h4><%= @place.name %></h4>
-            Website: <a href=""></a><br />
-            Email: rukevwe009@gmail.com<br />
-            Phone: 8138048895
+           Website: <%= link_to(h(@place.url), @place.url) %><br />
+            Email: <%= @place.email %><br />
+            Phone: <%= @place.phone %><br />
+          
+
+     
+
 
             <ul class="list-inline mt-20">
               <li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-danger px-lg-5 my-1 px-md-3">Contact us</a></li>
@@ -201,29 +241,30 @@
           <div class="widget map">
             <div class="map">
 
-              <script>
+ <% if @place.latitude.present? && @place.longitude.present? %>
+    <script>
 
-                function initMap() {
-                  var myLatLng = {lat: 28.5374094, lng: -81.1747498};
+      function initMap() {
+         var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: myLatLng
+        });
 
-                  var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
-                    center: myLatLng
-                  });
-
-                  var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: 'Hello World!'
-                  });
-                }
-              </script>
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+  </script>
 
               <script async defer
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&callback=initMap">
             </script>
             <div id="map"></div>
-
+         <% end %>
           </div>
         </div>
 
@@ -241,7 +282,7 @@
         </div>
         <!-- Safety tips widget -->
         <div class="widget disclaimer">
-          <h5 class="widget-header">Safety Tips</h5>
+          <h5 class="widget-header">Promotions</h5>
           <ul>
             <li>Meet seller at a public place</li>
             <li>Check the item before you buy</li>
@@ -250,7 +291,7 @@
           </ul>
         </div>
         <!-- Coupon Widget -->
-        <div class="widget coupon text-center">
+        <div class="widget coupon text-center bg-danger">
           <!-- Coupon description -->
           <p>HOURS OF OPERATION
               <ul>
@@ -281,7 +322,6 @@
 </section>
 
 
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -291,26 +331,20 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">Add a review</h4>
       </div>
- <form class="new_review" id="new_review" action="/places/4/reviews" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="cwXaAzUos7wfsDN5HcNMhmCDKyolggJXCLBvEILBtEy4Nioz+yuUKC3lD6uWKzzrs7yuI+77PdOdsxtvFrSGyA==" />
+ <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
         <div class="modal-body">
-          <div class="form-group"><label for="review_comment">Comment</label><textarea class="form-control" name="review[comment]" id="review_comment">
-</textarea></div>
-<div class="form-group"><label for="review_rating">Rating</label><input step="any" value="1" min="1" max="5" class="form-control" type="number" name="review[rating]" id="review_rating" /></div>
-             
+          <%= f.text_area :comment %>
+<%= f.number_field :rating, value: 1, min: 1, max: 5 %>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <div class="form-group"><input type="submit" name="commit" value="Submit Review" class="btn btn-primary btn" data-disable-with="Submit Review" /></div>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit Review", class: 'btn btn-primary' %>
         </div>
-</form>      </div>
+       <% end %>
+      </div>
     </div>
   </div>
-
-
-
-
-  </main>
-</div>
  
 
 

@@ -2,7 +2,6 @@ class PlacesController < ApplicationController
    protect_from_forgery except: [:upload_photo]
     before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
-
   def index
     @places = Place.all
   end
@@ -11,11 +10,13 @@ class PlacesController < ApplicationController
    @place = Place.find(params[:id])
   @review = Review.new
 
+
   end
 
 
   def new
     @place = Place.new
+     @categories = Category.all
   end
 
   def create
@@ -61,16 +62,7 @@ class PlacesController < ApplicationController
     @places = Place.search(params)
   end
 
-  def upload_photo
-   @place.photos.attach(params[:file])
-   render json: { success: true}
-  end
 
-  def delete_photo
-    @image = ActiveStorage::Attachment.find(params[:photo_id])
-    @image.purge
-    redirect_to place_path(@place)
-  end
 
   private
 

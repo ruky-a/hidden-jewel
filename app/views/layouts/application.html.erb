@@ -11,6 +11,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+      
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&libraries=places"></script>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 
@@ -30,15 +35,15 @@
 <% end %>
 
 
- <div id="flex-content-container">
-  <main>
+ <main>
+  <div class="#flex-content-container">
     <%= yield %>
-  </main>
-</div>
+  </div>
+</main>
  
 
 
-
+<div id="footer">
 <footer class="footer-bottom">
   <!-- Container Start -->
   <div class="container">
@@ -54,6 +59,7 @@
   </div>
  
 </footer>
+</div>
 
   </body>
 

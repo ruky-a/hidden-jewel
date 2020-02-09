@@ -13,6 +13,8 @@ module Hotelapp
     config.assets.paths << Rails.root.join("app", "assets", "font", "roboto")
    config.assets.paths << Rails.root.join("vendor", "assets", "img")
   config.assets.paths << Rails.root.join("vendor", "assets", "mdb-addons")
+   config.assets.paths << Rails.root.join("vendor", "assets", "addons-pro")
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
