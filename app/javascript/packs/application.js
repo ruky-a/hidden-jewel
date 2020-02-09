@@ -8,19 +8,16 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require("bootstrap/dist/js/bootstrap")
 
 
 
-window.Geocomplete = require("geocomplete")
 
-  $("#autolocation").geocomplete();
+
 
 import 'bootstrap'
 
 import "@fortawesome/fontawesome-free/js/all";
 
-import "stylesheets/application.scss"
 
 global.toastr = require("toastr")
 
