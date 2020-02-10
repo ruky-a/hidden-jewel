@@ -1425,13 +1425,15 @@ ul.pagination .active a {
   color: #fff;
 }
 
-.product-details .content .nav .nav-item .nav-link.active {
-  background: #5672f9;
-}
+
 
 .product-details .content .tab-content {
   background: #fff;
   padding: 30px;
+}
+
+.product-details .content .nav .nav-item .nav-link.active {
+    background: #fb3;
 }
 
 .product-slider {
