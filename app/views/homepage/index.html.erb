@@ -237,10 +237,10 @@
 
             </div>
             <div class="card-footer">
-         
+             <%= place.category.name %>
               <span class="float-right">
                 <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
-                  <%= place.category.name %>
+                 
                   <%= link_to place_path(place) do %>
                   <i class="fas fa-eye"></i>
                   <% end %>
