@@ -177,7 +177,9 @@
           <div class="widget user text-center">
 
 
-            <img class="rounded-circle img-fluid mb-5 px-5" src="http://127.0.0.1:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ea3ea11d4ef000a1f69cd4d88ce8e722614aa79/gig_cover_1.jpg" />
+        
+            <%= image_tag @place.avatar, class: "rounded-circle img-fluid mb-3 px-3" %>
+
             <h4><%= @place.name %></h4>
            Website: <%= link_to(h(@place.url), @place.url) %><br />
             Email: <%= @place.email %><br />

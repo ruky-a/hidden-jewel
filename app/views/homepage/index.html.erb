@@ -227,7 +227,7 @@
             <%= link_to place_path(place) do %>
             <% if place.photos.attached? %>
 
-            <%= image_tag place.photos.first, class: "card-img-top", height: "180px" %>
+            <%= image_tag place.photos.first, class: "card-img-top" %>
             <% end %>
             <% end %>
             <div class="card-body">
