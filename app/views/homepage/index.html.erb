@@ -159,7 +159,7 @@
           <br />
           <h1>Innovative advertising at affordable prices like never before!</h1>
           <ul class="list-inline mt-30">
-            <li class="list-inline-item"><a class="btn btn-dark" href="ad-listing.html">Get more details</a></li>
+            <li class="list-inline-item"><%= link_to 'Get more details', contact_path, class: 'btn btn-danger'%></li>
 
           </ul>
         </div>
@@ -198,9 +198,10 @@
 
             </div>
             <div class="card-footer">
-
+             <%= place.category.name %>
               <span class="float-right">
                 <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
+
                   <%= link_to place_path(place) do %>
                   <i class="fas fa-eye"></i>
                   <% end %>
@@ -239,6 +240,7 @@
          
               <span class="float-right">
                 <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
+                  <%= place.category.name %>
                   <%= link_to place_path(place) do %>
                   <i class="fas fa-eye"></i>
                   <% end %>
