@@ -1,5 +1,5 @@
 class HomepageController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!, :only => [:index, :show, :search, :contact]
   load_and_authorize_resource
 
   
@@ -8,6 +8,16 @@ class HomepageController < ApplicationController
     @places = Place.limit(3)
 
   end
+
+  def show
+
+  end
+
+  def contact
+
+  end
+    
+
 
 def search 
    @categories = Category.all

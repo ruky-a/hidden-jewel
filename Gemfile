@@ -37,6 +37,7 @@ gem "geocoder"
 gem "figaro"
 gem 'load_and_authorize_resource'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
 
 
 

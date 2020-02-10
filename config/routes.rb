@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 root 'homepage#index'
   get '/about', to: 'about#index'
   get '/search', to: 'homepage#search'
+  get '/contact', to: 'homepage#contact'
 
 resources :places do 
   resources :reviews, only: :create
