@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Category.create(name: "Restaurants")
+Category.create(name: "Restaurant")
 
 
-Category.where(name: "Restaurants").first_or_create(name: "Restaurants")
+Category.where(name: "Restaurant").first_or_create(name: "Restaurant")
 Category.where(name: "Fitness").first_or_create(name: "Fitness")
 Category.where(name: "Health").first_or_create(name: "Health")
 Category.where(name: "Legal").first_or_create(name: "Legal")
 Category.where(name: "Worship").first_or_create(name: "Worship")
 Category.where(name: "Fashion").first_or_create(name: "Fashion")
-Category.where(name: "Hotels").first_or_create(name: "Hotels")
+Category.where(name: "Hotel").first_or_create(name: "Hotel")
 Category.where(name: "Kids").first_or_create(name: "Kids")
 Category.where(name: "Media").first_or_create(name: "Media")
 Category.where(name: "Technology").first_or_create(name: "Technology")
