@@ -10,6 +10,7 @@
 Category.create(name: "Restaurant")
 
 
+
 Category.where(name: "Restaurant").first_or_create(name: "Restaurant")
 Category.where(name: "Fitness").first_or_create(name: "Fitness")
 Category.where(name: "Health").first_or_create(name: "Health")
@@ -20,3 +21,6 @@ Category.where(name: "Hotel").first_or_create(name: "Hotel")
 Category.where(name: "Kids").first_or_create(name: "Kids")
 Category.where(name: "Media").first_or_create(name: "Media")
 Category.where(name: "Technology").first_or_create(name: "Technology")
+Category.where(name: "Entertainment").first_or_create(name: "Entertainment")
+Category.where(name: "Transportation").first_or_create(name: "Transportation")
+Category.where(name: "Fashion").first_or_create(name: "Fashion")
