@@ -10,6 +10,11 @@ root 'homepage#index'
 
 resources :places do 
   resources :reviews, only: :create
+  member do 
+
+    delete :delete_photo
+    post :upload_photo
+  end
 
   
 end

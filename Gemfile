@@ -29,6 +29,7 @@ gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+
 gem 'font_awesome5_rails'
 gem 'devise'
 gem 'rails_admin', '~> 2.0'
@@ -41,7 +42,7 @@ gem "aws-sdk-s3", require: false
 
 
 
- gem 'jquery-rails'
+
   gem 'font-awesome-rails' 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

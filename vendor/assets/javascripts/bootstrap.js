@@ -43,6 +43,11 @@
     return obj;
   }
 
+  // MDB Lightbox Init
+$(function () {
+$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+});
+
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
 

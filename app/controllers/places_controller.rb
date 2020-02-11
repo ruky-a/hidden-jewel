@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
    protect_from_forgery except: [:upload_photo]
+     before_action :is_authorised, only: [:edit, :update, :upload_photo, :delete_photo]
     before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -30,7 +31,6 @@ class PlacesController < ApplicationController
 
 
   def edit
-    @place = Place.find(params[:id])
       if @place.user != current_user
      return render plain: 'Not Allowed', status: :forbidden
   end 
@@ -38,7 +38,6 @@ class PlacesController < ApplicationController
   end
 
   def update
-   @place = Place.find(params[:id])
       if @place.user != current_user
      return render plain: 'Not Allowed', status: :forbidden
   end 
@@ -63,12 +62,28 @@ class PlacesController < ApplicationController
   end
 
 
+  def upload_photo
+  @place.photos.attach(params[:file])
+  render json: {success: true}
+  end
+
+
+  def delete_photo
+  @image = ActiveStorage::Attachment.find(params[:photo_id])
+  @image.purge
+  redirect_to edit_place_path(@place)
+
+  end
+
+
 
   private
 
-
+ def is_authorised
+    redirect_to root_path, alert: "You do not have permission" unless current_user.id == @place.user_id
+  end
 
   def place_params
-    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :zipcode, :state, :city, :category_id, :avatar, :video, photos: [])
+    params.require(:place).permit(:name, :description, :address, :phone, :url, :email, :zipcode, :state, :city, :category_id, :avatar, :video )
   end
 end
