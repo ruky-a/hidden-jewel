@@ -44,14 +44,17 @@
               
 
                <li class="nav-item dropdown dropdown-slide">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">My Profile<span><i class=""></i></span>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Hi, <%= current_user.first_name %> <%= current_user.last_name %><span><i class=""></i></span>
                 </a>
               
 
             
                 <!-- Dropdown list -->
                 <div class="dropdown-menu">
-                  <a class="dropdown-item"> <%= link_to  "Log out", destroy_user_session_path, method: :delete %></a>
+            <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  <%= link_to  "Dashboard", dashboard_path, class: "dropdown-item"  %>
+                 <%= link_to  "Messages", dashboard_path, class: "dropdown-item"  %>
+                  <%= link_to  "Profile", edit_user_registration_path, class: "dropdown-item"  %>
                 </div>
               </li>
                 <% end %>

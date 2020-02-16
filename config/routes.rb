@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'users#dashboard'
+  post 'users/edit', to: 'users#update'
+ 
     devise_for :users
  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -7,6 +10,7 @@ root 'homepage#index'
   get '/about', to: 'about#index'
   get '/search', to: 'homepage#search'
   get '/contact', to: 'homepage#contact'
+  post 'messages', to: 'messages#create'
 
 resources :places do 
   resources :reviews, only: :create
@@ -18,6 +22,8 @@ resources :places do
 
   
 end
+
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,55 +1,5 @@
 
 
-
-
-
-@media (min-width: 560px) and (max-width: 650px) {
-      header .jarallax h1 {
-        margin-bottom: .5rem !important;
-      }
-      header .jarallax h5 {
-        margin-bottom: .5rem !important;
-      }
-    }
-
-    @media (min-width: 660px) and (max-width: 700px) {
-      header .jarallax h1 {
-        margin-bottom: 1.5rem !important;
-      }
-      header .jarallax h5 {
-        margin-bottom: 1.5rem !important;
-      }
-    }
-
-    .top-nav-collapse {
-      background-color: #7283A7 !important;
-    }
-
-    .navbar:not(.top-nav-collapse) {
-      background: transparent !important;
-    }
-
-    @media (max-width: 768px) {
-      .navbar:not(.top-nav-collapse) {
-        background: #7283A7 !important;
-      }
-    }
-    @media (min-width: 800px) and (max-width: 850px) {
-        .navbar:not(.top-nav-collapse) {
-            background: #7283A7!important;
-        }
-    }
-
-    footer.page-footer {
-      background-color: #383838;
-    }
-
-    @media (max-width: 450px) {
-      .display-3 {
-        font-size: 3rem;
-      }
-    }
-
 .box {
 -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
 -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -79,69 +29,7 @@ h1 {
 }
 
 
-html,
-body,
-header,
-.jarallax {
-height: 700px;
-}
 
-@media (max-width: 740px) {
-html,
-body,
-header,
-.jarallax {
-height: 100vh;
-}
-}
-
-@media (min-width: 800px) and (max-width: 850px) {
-html,
-body,
-header,
-.jarallax {
-height: 100vh;
-}
-}
-
-@media (min-width: 560px) and (max-width: 650px) {
-header .jarallax h1 {
-margin-bottom: .5rem !important;
-}
-header .jarallax h5 {
-margin-bottom: .5rem !important;
-}
-}
-
-
-@media (min-width: 660px) and (max-width: 700px) {
-header .jarallax h1 {
-margin-bottom: 1.5rem !important;
-}
-header .jarallax h5 {
-margin-bottom: 1.5rem !important;
-}
-}
-
-.top-nav-collapse {
-background-color: #171a1f !important;
-}
-.navbar:not(.top-nav-collapse) {
-background: #171a1f !important;
-}
-@media (max-width: 768px) {
-.navbar:not(.top-nav-collapse) {
-background: #171a1f !important;
-}
-}
-
-@media (min-width: 800px) and (max-width: 850px) {
-.navbar:not(.top-nav-collapse) {
-background: #171a1f !important;
-}
-}
-
-.view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
 
 h6 {
 line-height: 1.7;
@@ -196,16 +84,6 @@ position:absolute;
 }
 
 
-
-
-#mainNav {
-  background-color:  #593C1F;
-}
-
-
-.navbar:not(.top-nav-collapse) {
-    background: #593C1F !important;
-}
 
 #mainNav .navbar-toggler {
   font-size: 12px;

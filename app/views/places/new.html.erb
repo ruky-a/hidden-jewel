@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="col-lg-6">
-      
+
                     <%= f.text_field :name, class: "border w-100 p-2 bg-white text-capitalize" %>
                     <%= f.text_area :description, placeholder: "Write details of your place",  class: "border p-3 w-100 bg-white" %>
 
@@ -28,16 +28,16 @@
                             <%= f.text_field :zipcode, class: "py-2" %>
                         </div>
                         <div class="col-lg-6 mr-lg-6 rounded bg-white my-2">
-                              <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }, selected: @place.category_id)) %>
-                          </div>
-                      </div>
-                  </div>
-             
+                            <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }, selected: @place.category_id)) %>
+                        </div>
+                    </div>
+                </div>
 
-                            
-                      
+
+
+
                 <div class="col-lg-6">
-                   
+
                     <div class="row px-3">
 
                         <div class="col-lg-12 mr-lg-6 rounded  my-2 ">
@@ -47,28 +47,20 @@
                             <%= f.file_field :photos, multiple: true, placeholder: "Upload Photos" %>
                         </div>
 
-                         <div class="col-lg-12">
+                        <div class="col-lg-12">
                             <%= f.text_field :video, placeholder: "Youtube url e.g. Zc9mIDtJ3m8",autocomplete: "video url", class: "input" %>
                         </div>
 
-                          <div class="col-lg-12">
+                        <div class="col-lg-12">
                             <%= f.url_field :url, placeholder: "https://www.yourwebsite.com",autocomplete: "video url", class: "input" %>
                         </div>
 
-
-
-            
                     </div>
 
                 </div>
-
-
-
             </div>
         </fieldset>
-        <!-- Post Your ad end -->
 
-        <!-- seller-information start -->
         <fieldset class="border p-4 my-5 seller-information bg-gray">
             <div class="row">
                 <div class="col-lg-12">
@@ -76,11 +68,9 @@
                 </div>
                 <div class="col-lg-6">
                     <h6 class="font-weight-bold pt-4 pb-1"><%= f.email_field :email, placeholder: "name@yourbusinessemail.com", class: "border w-100 p-2" %></h6>
-
-                     
                 </div>
                 <div class="col-lg-6">
-                   <h6 class="font-weight-bold pt-4 pb-1"><%= f.phone_field :phone, class: "border w-100 p-2" %></h6>
+                    <h6 class="font-weight-bold pt-4 pb-1"><%= f.phone_field :phone, class: "border w-100 p-2" %></h6>
 
                 </div>
             </div>

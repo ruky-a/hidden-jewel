@@ -1,61 +1,119 @@
-<br><br>
-<div class="container">
-  <div class="row">
-    <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
 
-      <!--Form with header-->
-      <div class="card wow fadeIn" data-wow-delay="0.3s">
-        <div class="card-body">
 
-          <!--Header-->
-           <div class="form-header bg-white">
-            <h3><i class="fas fa-user"></i> Edit Profile</h3>
+
+<section class="user-profile section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <h5 class="text-center"><%= current_user.first_name %> <%=current_user.last_name %></h5>
+            <div class="image d-flex justify-content-center">
+                  <% if resource.picture.attached? %>
+
+         <%= image_tag resource.picture %>
+         <% else %>
+        <%= image_tag picture_url(current_user) %>
+         <% end %>
+        
+            </div>
+
+            <%= bootstrap_form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
+                                        <div class="file">
+                                        
+                                                <%= f.file_field :picture, placeholder: "Upload", class: "form-control-file mt-2 pt-1", onchange: "this.form.submit();" %>
+                                          
+                                        </div>
+                                    <% end %>
+
+        
+
+
+                                  
+             
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget dashboard-links">
+            <ul>
+              <li><a class="my-1 d-inline-block"></a></li>
+              <li><a class="my-1 d-inline-block" href="">Saved Offer <span>(5)</span></a></li>
+              <li><a class="my-1 d-inline-block" href="">Favourite Stores <span>(3)</span></a></li>
+              <li><a class="my-1 d-inline-block" href="">Recommended</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+        <!-- Edit Profile Welcome Text -->
+        <div class="widget welcome-message">
+          <h2>Edit profile</h2>
+        </div>
+        <!-- Edit Personal Info -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="widget personal-info">
+              <h3 class="widget-header user">Edit Personal Information</h3>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <!-- First Name -->
+              <div class="form-group">
+                 <label for="first-name">First Name</label>
+                <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+              </div>
+              <!-- Last Name -->
+              <div class="form-group">
+                 <label for="last-name">Last Name</label>
+                <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+              </div>
+             
+              <div class="form-group">
+                    <label for="email">Email</label>
+                <%= f.text_field :email, autofocus: true, class: "form-control" %>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <!-- Change Password -->
+            <div class="widget change-password">
+              <h3 class="widget-header user">Edit Password</h3>
+
+              <!-- Current Password -->
+              <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+              </div>
+              <!-- New Password -->
+              <div class="form-group">
+                  <label for="New_password">New Password</label>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+
+              </div>
+             
+              <div class="form-group">
+                  <label for="Confirm_password">Confirm New Password</label>
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password", class: "form-control" %>
+              </div>
+             </div>
+              <%= f.submit "Update", class: "btn btn-transparent" %>
+              <% end %>
+            </div>
           </div>
 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="md-form">
- <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
+
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-   <div class="md-form">
- <%= f.password_field :current_password, autocomplete: "off", placeholder: "current_password", class: "form-control" %>
-  </div>
+</div>
+</div>
+</section>
 
 
-    <div class="md-form">
-     <%= f.password_field :password, autocomplete: "off", placeholder: "New Password", class: "form-control" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-    <div class="md-form">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password", class: "form-control" %>
-  </div>
-
- 
-    <div class="text-center">
-            <%= f.submit "Update", class: "btn btn-primary" %>
-          </div>
-<% end %>
-
-
-
- <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+<%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
 <%= link_to "Back", :back %>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<br>
