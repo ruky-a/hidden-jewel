@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HIDDEN-JEWELS
 
 A web Application that integrates with Google Maps API and includes features like user comment, image uploading and user authentication. 
@@ -18,3 +19,6 @@ A web Application that integrates with Google Maps API and includes features lik
 
   ![Home Screenshot](./app/assets/images/jewel-home.png)
 
+=======
+A web Application that integrates with Google Maps API and includes features like user comment, image uploading and user authentication. Built with Ruby on rails, html and css
+>>>>>>> 6bb8c7b0bf8547160ba6a3e0164c357a344e1f73
