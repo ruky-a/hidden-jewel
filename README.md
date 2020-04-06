@@ -1,24 +1,20 @@
-# README
+# HIDDEN-JEWELS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web Application that integrates with Google Maps API and includes features like user comment, image uploading and user authentication. 
 
-Things you may want to cover:
 
-* Ruby version
+  * Built with ruby on rails
 
-* System dependencies
+  * Bootstrap
 
-* Configuration
+  * Ruby version 2.6 with Rails 6
 
-* Database creation
+  * Database: Postgresql
 
-* Database initialization
+  * Admin backend with railsadmin
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+  ![Home Screenshot](./app/assets/images/jewel-home.png)
+

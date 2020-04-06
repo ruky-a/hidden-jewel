@@ -119,7 +119,7 @@
                       <% if review.place.avatar.attached? %>
                       <%= image_tag review.place.avatar, class: "rounded-circle", size: 60 %><br/>
                       <% end %>
-                      
+
                       <div class="media-body">
                         <!-- Ratings -->
 
@@ -144,43 +144,44 @@
                         </div>
 
                         <div class="name">
-                         <h5><%= review.user.email %></h5>
-                       </div>
+                          <h5><%= review.user.email %></h5>
+                        </div>
 
-                       <div class="date">
-                         <%= review.created_at.strftime('%b %d %Y') %>   
-                       </div>
+                        <div class="date">
+                          <%= review.created_at.strftime('%b %d %Y') %>   
+                        </div>
 
-                       <div class="review-comment">
-                        <p>
-                          <%= review.comment %>
-                        </p>
+                        <div class="review-comment">
+                          <p>
+                            <%= review.comment %>
+                          </p>
+                        </div>
+
                       </div>
-
                     </div>
-                  </div>
-                  <% end %>
+                    <% end %>
 
-                  <div class="review-submission">
-                    <h3 class="tab-title">Write your review</h3>
-                    <!-- Rate -->
-                    <div class="rate">
-                      <div class="starrr"></div>
-                    </div>
-                    <div class="review-submit">
-                      <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
+                    <div class="review-submission">
+                      <h3 class="tab-title">Write your review</h3>
+                      <!-- Rate -->
+                      <div class="rate">
+                        <div class="starrr"></div>
+                      </div>
+                      <div class="review-submit">
+                        <%= bootstrap_form_for @review, url: place_reviews_path(@place) do |f| %>
 
-                      <div class="col-12">
-                        <%= f.text_area :comment %>
+                        <div class="col-12">
+                          <%= f.text_area :comment %>
 
+                        </div>
+                        <div class="col-12">
+                          <%= f.number_field :rating %>
+                        </div>
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-main">Sumbit</button>
+                        </div>
+                        <% end %>
                       </div>
-                      <div class="col-12">
-                        <%= f.number_field :rating %>
-                      </div>
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-main">Sumbit</button>
-                      </div>
-                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -188,148 +189,143 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right sidebar -->
-      <div class="col-md-4">
-        <div class="sidebar">
+        <!-- Right sidebar -->
+        <div class="col-md-4">
+          <div class="sidebar">
 
-          <!-- User Profile widget -->
-          <div class="widget user text-center">
+            <!-- User Profile widget -->
+            <div class="widget user text-center">
 
 
-            <% if @place.avatar.attached? %>
-            <%= image_tag @place.avatar, class: "rounded-circle", size: 80 %>
-            <% end %>
-            <h4><%= @place.name %></h4>
-            Website: <%= link_to(h(@place.url), @place.url) %><br />
-            Email: <%= @place.email %><br />
-            Phone: <%= @place.phone %><br />
-
+              <% if @place.avatar.attached? %>
+              <%= image_tag @place.avatar, class: "rounded-circle", size: 80 %>
+              <% end %>
+              <h4><%= @place.name %></h4>
+              Website: <%= link_to(h(@place.url), @place.url) %><br />
+              Email: <%= @place.email %><br />
+              Phone: <%= @place.phone %><br />
 
 
 
 
-            <ul class="list-inline mt-20">
-              
-              <li class="list-inline-item">
-               <button type="button" class="btn btn-contact d-inline-block  btn-danger px-lg-5 my-1 px-md-3" data-toggle="modal" data-target="#myModal1">
-              Chat with us
-            </button></li>
-            </ul>
+              <ul class="list-inline mt-20">
+
+                <li class="list-inline-item">
+                  <button type="button" class="btn btn-contact d-inline-block  btn-danger px-lg-5 my-1 px-md-3" data-toggle="modal" data-target="#myModal1">
+                    Chat with us
+                  </button></li>
+                </ul>
+              </div>
+
+              <div class="modal fade" id="myModal1" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="float-left">
+
+
+                        <% if @place.avatar.attached? %>
+                        <%= image_tag @place.avatar, class: "rounded-circle", size: 80 %>
+                        <% end %>
+                      </div>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">Write a message</h4>
+                    </div>
+                    <%= bootstrap_form_with model: Message.new do |f| %>
+                    <%= f.hidden_field :receiver_id, value: @place.user %>
+
+                    <div class="modal-body">
+
+                      <%= f.text_area :content, class: "textarea" %>
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <!-- Map Widget -->
+              <div class="widget map">
+                <div class="map">
+                  <%= @place.address %>, <%= @place.city %> <%= @place.state %>, <%= @place.zipcode %>
+                  <% if @place.latitude.present? && @place.longitude.present? %>
+                  <script>
+
+                    function initMap() {
+                      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 12,
+                        center: myLatLng
+                      });
+
+                      var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: 'Hello World!'
+                      });
+                    }
+                  </script>
+
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&callback=initMap">
+                </script>
+                <div id="map"></div>
+                <% end %>
+              </div>
+            </div>
+
+
+            <!-- Rate Widget -->
+            <div class="widget rate">
+              <!-- Heading -->
+              <div class="widget-header text-center">
+                <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#myModal">
+                  Add a review
+                </button>
+              </div>
+              <!-- Rate -->
+              <div class="starrr"></div>
+            </div>
+            <!-- Safety tips widget -->
+            <div class="widget disclaimer">
+              <h5 class="widget-header">Promotions</h5>Coupon code for discounts
+            </div>
+            <!-- Coupon Widget -->
+            <div class="widget coupon text-center bg-danger">
+              <!-- Coupon description -->
+              <p>HOURS OF OPERATION
+                <ul>
+                  <li><P> Monday - Friday <br /> 10AM - 8PM</p></li>
+                    <li><p>000-000-0000</p></li>
+
+                  </ul>
+                </p>
+
+                <!-- Submii button -->
+                <a href
+
+                ="" class="btn btn-transparent-white">Visit this Gem</a>
+              </div>
+
+
+            </div>
           </div>
 
-          <div class="modal fade" id="myModal1" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="float-left">
-
-
-            <% if @place.avatar.attached? %>
-            <%= image_tag @place.avatar, class: "rounded-circle", size: 80 %>
-            <% end %>
-          </div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Write a message</h4>
-      </div>
-      <%= bootstrap_form_with model: Message.new do |f| %>
-
-      <div class="modal-body">
-         
-        <%= f.text_area :content, class: "textarea" %>
-
-
-      </div>
-      <div class="modal-footer">
-        <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
-
-          <!-- Map Widget -->
-          <div class="widget map">
-            <div class="map">
-              <%= @place.address %>, <%= @place.city %> <%= @place.state %>, <%= @place.zipcode %>
-              <% if @place.latitude.present? && @place.longitude.present? %>
-              <script>
-
-                function initMap() {
-                  var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-
-                  var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
-                    center: myLatLng
-                  });
-
-                  var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: 'Hello World!'
-                  });
-                }
-              </script>
-
-              <script async defer
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVi5Uoez-7hb5hh3ZBEn2g4kXMbwdYRk&callback=initMap">
-            </script>
-            <div id="map"></div>
-            <% end %>
-          </div>
         </div>
-
-
-        <!-- Rate Widget -->
-        <div class="widget rate">
-          <!-- Heading -->
-          <div class="widget-header text-center">
-            <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#myModal">
-              Add a review
-            </button>
-          </div>
-          <!-- Rate -->
-          <div class="starrr"></div>
-        </div>
-        <!-- Safety tips widget -->
-        <div class="widget disclaimer">
-          <h5 class="widget-header">Promotions</h5>Coupon code for discounts
-        </div>
-        <!-- Coupon Widget -->
-        <div class="widget coupon text-center bg-danger">
-          <!-- Coupon description -->
-          <p>HOURS OF OPERATION
-            <ul>
-              <li><P> Monday - Friday <br /> 10AM - 8PM</p></li>
-                <li><p>000-000-0000</p></li>
-
-              </ul>
-            </p>
-
-            <!-- Submii button -->
-            <a href
-
-            ="" class="btn btn-transparent-white">Visit this Gem</a>
-          </div>
-
-
-        </div>
       </div>
+      <div class="container float-right">
 
-    </div>
-  </div>
-  <div class="container float-right">
-<!--   <a class="btn btn-primary" href="/places/4/edit">Edit</a>
-
-<a data-confirm="Are you sure you want to delete this?" class="btn btn-danger" rel="nofollow" data-method="delete" href="/places/4">Destroy</a>
-</div>
-</div>
-Container End --> 
 </section>
 
 

@@ -10,41 +10,29 @@
           <div class="widget user">
             <h5 class="text-center"><%= current_user.first_name %> <%=current_user.last_name %></h5>
             <div class="image d-flex justify-content-center">
-                  <% if resource.picture.attached? %>
+              <% if resource.picture.attached? %>
 
-         <%= image_tag resource.picture %>
-         <% else %>
-        <%= image_tag picture_url(current_user) %>
-         <% end %>
-        
+              <%= image_tag resource.picture %>
+              <% else %>
+              <%= image_tag picture_url(current_user) %>
+              <% end %>
+
             </div>
 
             <%= bootstrap_form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
-                                        <div class="file">
-                                        
-                                                <%= f.file_field :picture, placeholder: "Upload", class: "form-control-file mt-2 pt-1", onchange: "this.form.submit();" %>
-                                          
-                                        </div>
-                                    <% end %>
+            <div class="file">
 
-        
+              <%= f.file_field :picture, placeholder: "Upload", class: "form-control-file mt-2 pt-1", onchange: "this.form.submit();" %>
+
+            </div>
+            <% end %>
 
 
-                                  
-             
           </div>
-          <!-- Dashboard Links -->
-          <div class="widget dashboard-links">
-            <ul>
-              <li><a class="my-1 d-inline-block"></a></li>
-              <li><a class="my-1 d-inline-block" href="">Saved Offer <span>(5)</span></a></li>
-              <li><a class="my-1 d-inline-block" href="">Favourite Stores <span>(3)</span></a></li>
-              <li><a class="my-1 d-inline-block" href="">Recommended</a></li>
-            </ul>
-          </div>
+      
         </div>
       </div>
-      
+
       <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
         <!-- Edit Profile Welcome Text -->
         <div class="widget welcome-message">
@@ -58,17 +46,17 @@
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
               <!-- First Name -->
               <div class="form-group">
-                 <label for="first-name">First Name</label>
+                <label for="first-name">First Name</label>
                 <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
               </div>
               <!-- Last Name -->
               <div class="form-group">
-                 <label for="last-name">Last Name</label>
+                <label for="last-name">Last Name</label>
                 <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
               </div>
-             
+
               <div class="form-group">
-                    <label for="email">Email</label>
+                <label for="email">Email</label>
                 <%= f.text_field :email, autofocus: true, class: "form-control" %>
               </div>
 
@@ -81,34 +69,34 @@
 
               <!-- Current Password -->
               <div class="form-group">
-                    <label for="current_password">Current Password</label>
+                <label for="current_password">Current Password</label>
                 <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
               </div>
               <!-- New Password -->
               <div class="form-group">
-                  <label for="New_password">New Password</label>
+                <label for="New_password">New Password</label>
                 <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
 
               </div>
-             
+
               <div class="form-group">
-                  <label for="Confirm_password">Confirm New Password</label>
+                <label for="Confirm_password">Confirm New Password</label>
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password", class: "form-control" %>
               </div>
-             </div>
-              <%= f.submit "Update", class: "btn btn-transparent" %>
-              <% end %>
             </div>
+            <%= f.submit "Update", class: "btn btn-danger" %>
+            <% end %>
           </div>
-
-
-
-
-
         </div>
+
+
+
+
+
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </section>

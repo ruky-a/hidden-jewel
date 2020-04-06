@@ -16,7 +16,7 @@ class PlacesController < ApplicationController
 
 
   def new
-    @place = Place.new
+    @place = current_user.place.build
      @categories = Category.all
   end
 

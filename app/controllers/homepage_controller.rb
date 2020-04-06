@@ -21,6 +21,7 @@ class HomepageController < ApplicationController
 
 def search 
    @categories = Category.all
+  
   @places = Place.search(params)
   @places = Place.where(category_id: params[:category].to_i)
   @places = Place.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
