@@ -19,9 +19,8 @@ A web Application that integrates with Google Maps API and includes features lik
 
   ![Home Screenshot](./app/assets/images/jewel-home.png)
 
-
-<<<<<<< HEAD
+  
+  
   ![Showpage Screenshot](./app/assets/images/map.png)
 
-=======
->>>>>>> 9d839a19eb0b11715f97864684b81bf5d0b2e94a
+
