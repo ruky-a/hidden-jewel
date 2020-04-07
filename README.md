@@ -16,9 +16,13 @@ A web Application that integrates with Google Maps API and includes features lik
 
 
 
-
+  This is the homepage:
+  
   ![Home Screenshot](./app/assets/images/jewel-home.png)
 
+  
+  
+  This is the showpage with embedded youtute videos and google map:
   
   
   ![Showpage Screenshot](./app/assets/images/map.png)
