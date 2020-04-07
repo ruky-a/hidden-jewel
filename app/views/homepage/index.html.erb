@@ -1,149 +1,127 @@
 <section class="hero-area bg-1 text-center overly">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Header Contetnt -->
-        <div class="content-block">
-          <%= link_to places_path do %>
-          <%= image_tag 'box6.jpg' %><br /><br />
-          <% end %>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="content-block">
+<%= link_to places_path do %>
+<%= image_tag 'box6.jpg' %><br /><br />
+<% end %>
 
-          <div class="advance-search">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12 align-content-center">
+<div class="advance-search">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-12 col-md-12 align-content-center">
 
-                  <%= form_tag search_path, method: :get do |f| %>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <%= text_field_tag :search, params[:search], placeholder: "Gym, Hotels, Salon etc.", class: "form-control my-2 my-lg-1" %>
+<%= form_tag search_path, method: :get do |f| %>
+<div class="form-row">
+<div class="form-group col-md-4">
+<%= text_field_tag :search, params[:search], placeholder: "Gym, Hotels, Salon etc.", class: "form-control my-2 my-lg-1" %>
 
-                    </div>
+</div>
 
 
-                    <div class="form-group col-md-3">
-                      <%= text_field_tag :location, nil, placeholder: "Location e.g Chicago", class: "form-control my-2 my-lg-1" %>
+<div class="form-group col-md-3">
+<%= text_field_tag :location, nil, placeholder: "Location e.g Chicago", class: "form-control my-2 my-lg-1" %>
 
-                    </div>
+</div>
 
-                    <div class="form-group col-md-3">
-                      <%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}), prompt: "Select category", class: "form-control mt-lg-1 mt-md-2" %>
+<div class="form-group col-md-3">
+<%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}), prompt: "Select category", class: "form-control mt-lg-1 mt-md-2" %>
 
-                    </div>
+</div>
 
-                    <div class="form-group col-md-2 my-btn">
-                      <%= submit_tag "Search", class: " btn btn-block btn-warning" %>
+<div class="form-group col-md-2 my-btn">
+<%= submit_tag "Search", class: " btn btn-block btn-warning" %>
 
-                    </div>
-                  </div>
-                  <% end %>
-                </div>
-               
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+</div>
+</div>
+<% end %>
+</div>
 
-    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
 <br /><br />
-  </section>
+</section>
 </div>
 
 
 <section class=" section">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <!-- Section title -->
-        <h1 class="text-center">Search For Gems Around You!</h1>
-        <br />
-        <div class="row">
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-                  <i class="fas fa-utensils icon-bg-2"></i> 
-               
-                     <h4>Restaurants</h4>
-               
-              </div>
-              <% @categories.each do |item| %>
-              <ul class="category-list" >
+<!-- Container Start -->
+<div class="container">
+<div class="row">
+<div class="col-12">
+<!-- Section title -->
+<h1 class="text-center">Search For Gems Around You!</h1>
+<br />
+<div class="row">
+<!-- Category list -->
+<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+<div class="category-block">
+<div class="header">
+<i class="fas fa-utensils icon-bg-2"></i> 
+<%= link_to search_path(category: 1) do %>
 
-                <li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
+<h4>Restaurants</h4>
 
+<% end %>
 
-              </ul>
+</div>
 
-              <% end %>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-            <i class="fa fa-home icon-bg-3"></i> 
-               <h4>Real Estate</h4>
-              </div>
-             <% @categories.each do |item| %>
-              <ul class="category-list" >
+</div>
+</div> <!-- /Category List -->
+<!-- Category list -->
+<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+<div class="category-block">
+<div class="header">
+<i class="fa fa-home icon-bg-3"></i> 
+<%= link_to search_path(category: 2) do %>
+<h4>Real Estate</h4>
+<% end %>
+</div>
+<!--  <% @categories.each do |item| %>
+<ul class="category-list" >
 
-                <li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
+<li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
 
 
-              </ul>
+</ul>
 
-              <% end %>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-                <i class="fa fa-child icon-bg-4"></i> 
-                <h4>Fashion</h4>
-              </div>
-              <% @categories.each do |item| %>
-              <ul class="category-list" >
+<% end %> -->
+</div>
+</div> 
 
-                <li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
+<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+<div class="category-block">
+<div class="header">
+<i class="fa fa-child icon-bg-4"></i> 
+<%= link_to search_path(category: 2) do %>
+<h4>Fashion</h4>
+<% end %>
+</div>
 
+</div>
+</div> 
+<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+<div class="category-block">
+<div class="header">
+<i class="fa fa-laptop icon-bg-8"></i> 
+<%= link_to search_path(category: 1) do %>
+<h4>Services</h4>
+<% end %>
+</div>
 
-              </ul>
-
-              <% end %>
-            </div>
-          </div> <!-- /Category List -->
-          <!-- Category list -->
-          <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-            <div class="category-block">
-              <div class="header">
-        <i class="fa fa-laptop icon-bg-8"></i> 
-                <h4>Services</h4>
-              </div>
-               <% @categories.each do |item| %>
-              <ul class="category-list" >
-
-                <li><%= link_to "#{item.name}", search_path(category: item.id) %> </li>
-
-
-              </ul>
-
-              <% end %>
-            </div>
-          </div> <!-- /Category List -->
-       
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
+</div>
+</div> 
+</div>
+</div>
+</div>
+</div>
 </section>
 
 
@@ -151,124 +129,111 @@
 
 
 <section class="call-to-action overlay bg-3 section-sm">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row justify-content-md-center text-center">
-      <div class="col-md-8">
-        <div class="content-holder">
-          <h2>Are you a Hidden Jewel?
-          Be A Gem!</h2>
-          <br />
-          <h1>Innovative advertising at affordable prices like never before!</h1>
-          <ul class="list-inline mt-30">
-            <li class="list-inline-item"><%= link_to 'Get more details', contact_path, class: 'btn btn-danger'%></li>
+<div class="container">
+<div class="row justify-content-md-center text-center">
+<div class="col-md-8">
+<div class="content-holder">
+<h2>Are you a Hidden Jewel?
+Be A Gem!</h2>
+<br />
+<h1>Innovative advertising at affordable prices like never before!</h1>
+<ul class="list-inline mt-30">
+<li class="list-inline-item"><%= link_to 'Get more details', contact_path, class: 'btn btn-danger'%></li>
 
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Container End -->
 </section>
 
 
 <h1 class="font-weight-bold text-center h1 my-5">Featured Gems</h1>
 <!--Carousel Wrapper-->
 <div class="container">
-  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
 
 
-    <div class="carousel-inner" role="listbox">
+<div class="carousel-inner" role="listbox">
 
-      <!--First slide-->
-      <div class="carousel-item active">
-
-
-        <% @places.each do |place| %>
-        <div class="col-md-4">
-          <div class="card mb-2">
-            <%= link_to place_path(place) do %>
-            <div class="card-img-top">
-
-              <iframe src="https://www.youtube.com/embed/<%= place.video %>" allowfullscreen, width= "100%" height="100%" ></iframe>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
-              <p class="card-text"><%= place.city %>, <%= place.state %></p>
-
-            </div>
-            <div class="card-footer">
-             <%= place.category.name %>
-              <span class="float-right">
-                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
-
-                  <%= link_to place_path(place) do %>
-                  <i class="fas fa-eye"></i>
-                  <% end %>
-                </a>
-                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                </a>
-              </span>
-            </div>
-
-          </div>
-        </div>
-        <% end %>
+<!--First slide-->
+<div class="carousel-item active">
 
 
-      </div>
-      <!--/.First slide-->
+<% @places.each do |place| %>
+<div class="col-md-4">
+<div class="card mb-2">
+<%= link_to place_path(place) do %>
+<div class="card-img-top">
 
-      <!--Second slide-->
-      <div class="carousel-item">
+<iframe src="https://www.youtube.com/embed/<%= place.video %>" allowfullscreen, width= "100%" height="100%" ></iframe>
+<% end %>
+</div>
+<div class="card-body">
+<h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
+<p class="card-text"><%= place.city %>, <%= place.state %></p>
 
-        <% @places.each do |place| %>
-        <div class="col-md-4">
-          <div class="card mb-2">
-            <%= link_to place_path(place) do %>
-            <% if place.photos.attached? %>
+</div>
+<div class="card-footer">
+<%= place.category.name %>
+<span class="float-right">
+<a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
 
-            <%= image_tag place.photos.first, class: "card-img-top" %>
-            <% end %>
-            <% end %>
-            <div class="card-body">
-              <h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
-              <p class="card-text"><%= place.city %>, <%= place.state %></p>
+<%= link_to place_path(place) do %>
+<i class="fas fa-eye"></i>
+<% end %>
+</a>
+<a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+</a>
+</span>
+</div>
 
-            </div>
-            <div class="card-footer">
-             <%= place.category.name %>
-              <span class="float-right">
-                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
-                 
-                  <%= link_to place_path(place) do %>
-                  <i class="fas fa-eye"></i>
-                  <% end %>
-                </a>
-                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                </a>
-              </span>
-            </div>
-
-          </div>
-        </div>
-        <% end %>
+</div>
+</div>
+<% end %>
 
 
+</div>
+<div class="carousel-item">
 
+<% @places.each do |place| %>
+<div class="col-md-4">
+<div class="card mb-2">
+<%= link_to place_path(place) do %>
+<% if place.photos.attached? %>
 
-      </div>
+<%= image_tag place.photos.first, class: "card-img-top" %>
+<% end %>
+<% end %>
+<div class="card-body">
+<h4 class="card-title"><%= link_to place.name, place_path(place) %></h4>
+<p class="card-text"><%= place.city %>, <%= place.state %></p>
 
+</div>
+<div class="card-footer">
+<%= place.category.name %>
+<span class="float-right">
+<a class="" data-toggle="tooltip" data-placement="top" title="Quick Look">
 
-    </div>
+<%= link_to place_path(place) do %>
+<i class="fas fa-eye"></i>
+<% end %>
+</a>
+<a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+</a>
+</span>
+</div>
 
-
-  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
 </div>
 
 <br />
 <section class="section pb-3 wow fadeIn" data-wow-delay="0.3s">
 
-  
