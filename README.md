@@ -8,10 +8,8 @@ A web Application that integrates with Google Maps API and includes features lik
 
   * Bootstrap
 
-  * Ruby version 2.6 with Rails 6
-
-  * Database: Postgresql
-
+  * Ruby version 2.6 with Rails 6.0
+  
   * Admin backend with railsadmin
 
 
